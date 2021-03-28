@@ -1,6 +1,6 @@
 # new stand
 execute as @e[type=armor_stand,tag=new] run data merge entity @s {Rotation:[0.0f,0.0f]}
-execute as @e[type=armor_stand,tag=new] at @s run tp ~ ~-0.9375 ~
+execute as @e[type=armor_stand,tag=new] at @s run tp ~ ~-0.226 ~
 execute as @e[type=armor_stand,tag=new] run tag @s add block
 execute as @e[type=armor_stand,tag=new] run tag @s remove new
 

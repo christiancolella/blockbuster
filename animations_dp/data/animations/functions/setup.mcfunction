@@ -30,6 +30,20 @@ scoreboard objectives add parent_rot_x dummy
 scoreboard objectives add parent_rot_y dummy
 scoreboard objectives add parent_rot_z dummy
 
+scoreboard objectives add self_cos_x dummy
+scoreboard objectives add self_cos_y dummy
+scoreboard objectives add self_cos_z dummy
+scoreboard objectives add self_sin_x dummy
+scoreboard objectives add self_sin_y dummy
+scoreboard objectives add self_sin_z dummy
+
+scoreboard objectives add parent_cos_x dummy
+scoreboard objectives add parent_cos_y dummy
+scoreboard objectives add parent_cos_z dummy
+scoreboard objectives add parent_sin_x dummy
+scoreboard objectives add parent_sin_y dummy
+scoreboard objectives add parent_sin_z dummy
+
 scoreboard objectives add self_matrix_0 dummy
 scoreboard objectives add self_matrix_1 dummy
 scoreboard objectives add self_matrix_2 dummy
@@ -61,6 +75,22 @@ scoreboard objectives add initial_rot_x dummy
 scoreboard objectives add initial_rot_y dummy
 scoreboard objectives add initial_rot_z dummy
 
+scoreboard objectives add last_rot_x dummy
+scoreboard objectives add last_rot_y dummy
+scoreboard objectives add last_rot_z dummy
+
+scoreboard objectives add self_omega_x dummy
+scoreboard objectives add self_omega_y dummy
+scoreboard objectives add self_omega_z dummy
+
+scoreboard objectives add parent_omega_x dummy
+scoreboard objectives add parent_omega_y dummy
+scoreboard objectives add parent_omega_z dummy
+
+scoreboard objectives add correction_x dummy
+scoreboard objectives add correction_y dummy
+scoreboard objectives add correction_z dummy
+
 # for edit mode
 scoreboard objectives add steps dummy
 
@@ -78,6 +108,7 @@ team modify delete color dark_red
 
 # set constants
 scoreboard players set #-1 constants -1
+scoreboard players set #24 constants 24
 scoreboard players set #1000 constants 1000
 scoreboard players set #90000 constants 90000
 scoreboard players set #180000 constants 180000

@@ -4,7 +4,7 @@
         "head": {
             "rotation": [ 0, 0, 0 ],
             "translation": [ 0, -6.4, 0 ],
-            "scale": [ 1.6, 1.6, 1.6 ]
+            "scale": [ 2.285, 2.285, 2.285 ]
         },
         "gui": {
             "rotation": [ 30, 225, 0 ],

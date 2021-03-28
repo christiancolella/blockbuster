@@ -1,7 +1,6 @@
-execute as @e[type=armor_stand,tag=block,tag=!tested,limit=1] run tag @s add testforparent
-execute as @e[type=armor_stand,tag=block] if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_0 = @s self_uuid_0 if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_1 = @s self_uuid_1 if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_2 = @s self_uuid_2 if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_3 = @s self_uuid_3 run tag @s add is_parent
-execute as @e[type=armor_stand,tag=block] if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_0 = @s self_uuid_0 if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_1 = @s self_uuid_1 if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_2 = @s self_uuid_2 if score @e[type=armor_stand,tag=testforparent,limit=1] parent_uuid_3 = @s self_uuid_3 run tag @e[type=armor_stand,tag=testforparent] add has_parent
-tag @e[type=armor_stand,tag=testforparent] add tested
-tag @e[type=armor_stand,tag=testforparent] remove testforparent
-execute if entity @e[type=armor_stand,tag=block,tag=!tested] run function animations:test_for_parent
-tag @e[type=armor_stand,tag=block] remove tested
+execute as @e[type=armor_stand,tag=block,scores={temp=0},limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=block] if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_0 = @s self_uuid_0 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_1 = @s self_uuid_1 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_2 = @s self_uuid_2 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_3 = @s self_uuid_3 run tag @s add is_parent
+execute as @e[type=armor_stand,tag=block] if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_0 = @s self_uuid_0 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_1 = @s self_uuid_1 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_2 = @s self_uuid_2 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_3 = @s self_uuid_3 run tag @e[type=armor_stand,scores={temp=1}] add has_parent
+scoreboard players set @e[type=armor_stand,scores={temp=1}] temp 2
+execute if entity @e[type=armor_stand,tag=block,scores={temp=0}] run function animations:test_for_parent
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
