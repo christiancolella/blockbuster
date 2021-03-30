@@ -91,16 +91,33 @@ scoreboard objectives add correction_x dummy
 scoreboard objectives add correction_y dummy
 scoreboard objectives add correction_z dummy
 
+# for animations
+scoreboard objectives add anim_offset_x dummy
+scoreboard objectives add anim_offset_y dummy
+scoreboard objectives add anim_offset_z dummy
+
+scoreboard objectives add anim_rot_x dummy
+scoreboard objectives add anim_rot_y dummy
+scoreboard objectives add anim_rot_z dummy
+
+scoreboard objectives add anim_length dummy
+scoreboard objectives add loop dummy
+scoreboard objectives add time dummy
+scoreboard objectives add interpol_type dummy
+
 # for edit mode
+scoreboard objectives add edit dummy
 scoreboard objectives add steps dummy
 
 team add hover
+team add parent_glow
 team add add_parent
 team add remove_parent
 team add select_parent
 team add delete
 
 team modify hover color blue
+team modify parent_glow color dark_blue
 team modify add_parent color yellow
 team modify remove_parent color red
 team modify select_parent color gold

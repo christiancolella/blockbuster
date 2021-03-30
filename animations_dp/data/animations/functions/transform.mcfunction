@@ -131,6 +131,7 @@ execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation 
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s temp *= #-1 constants
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_x += @s temp
+execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_x += @s anim_pos_x
 
 ## y position component
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_y = @s parent_pos_y
@@ -146,6 +147,7 @@ execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation 
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s temp *= @s parent_matrix_5
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_y += @s temp
+execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_y += @s anim_pos_y
 
 ## z position component
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_z = @s parent_pos_z
@@ -161,19 +163,23 @@ execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation 
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s temp *= @s parent_matrix_8
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_z += @s temp
+execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_pos_z += @s anim_pos_z
 
 ## rotation
-execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_rot_x = @s parent_rot_x
-execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_rot_x += @s initial_rot_x
-execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_rot_y = @s parent_rot_y
-execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_rot_y += @s initial_rot_y
-execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_rot_z = @s parent_rot_z
-execute as @e[type=armor_stand,tag=has_parent] run scoreboard players operation @s self_rot_z += @s initial_rot_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_x = @s parent_rot_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_x += @s initial_rot_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_x += @s anim_rot_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_y = @s parent_rot_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_y += @s initial_rot_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_y += @s anim_rot_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_z = @s parent_rot_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_z += @s initial_rot_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_rot_z += @s anim_rot_z
 
 # merge transformations
-execute as @e[type=armor_stand,tag=has_parent] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
-execute as @e[type=armor_stand,tag=has_parent] store result entity @s Pos[1] double 0.001 run scoreboard players get @s self_pos_y
-execute as @e[type=armor_stand,tag=has_parent] store result entity @s Pos[2] double 0.001 run scoreboard players get @s self_pos_z
-execute as @e[type=armor_stand,tag=has_parent] store result entity @s Pose.Head[0] float 0.001 run scoreboard players get @s self_rot_x
-execute as @e[type=armor_stand,tag=has_parent] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
-execute as @e[type=armor_stand,tag=has_parent] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
+execute as @e[type=armor_stand,tag=block] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
+execute as @e[type=armor_stand,tag=block] store result entity @s Pos[1] double 0.001 run scoreboard players get @s self_pos_y
+execute as @e[type=armor_stand,tag=block] store result entity @s Pos[2] double 0.001 run scoreboard players get @s self_pos_z
+execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[0] float 0.001 run scoreboard players get @s self_rot_x
+execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
+execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
