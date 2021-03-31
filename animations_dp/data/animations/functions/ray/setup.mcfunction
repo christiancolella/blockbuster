@@ -4,6 +4,7 @@ execute as @a[scores={edit=1..,temp=0},limit=1] run scoreboard players set @s te
 execute as @a[scores={temp=1}] at @s run summon armor_stand ~ ~1.625 ~ {Marker:1b,NoGravity:1b,Invisible:1b,Tags:["ray"]}
 execute as @a[scores={temp=1}] run data modify entity @e[type=armor_stand,tag=ray,limit=1] Rotation set from entity @s Rotation
 
+
 # state transitions
 
 ## enter edit mode

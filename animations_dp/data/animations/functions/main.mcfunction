@@ -1,4 +1,6 @@
 # set up scores
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
 execute as @e[type=armor_stand,tag=block] store result score @s self_uuid_0 run data get entity @s UUID[0]
 execute as @e[type=armor_stand,tag=block] store result score @s self_uuid_1 run data get entity @s UUID[1]
 execute as @e[type=armor_stand,tag=block] store result score @s self_uuid_2 run data get entity @s UUID[2]
@@ -40,7 +42,26 @@ tag @e[type=armor_stand,tag=block] remove is_parent
 tag @e[type=armor_stand,tag=block] remove has_parent
 function animations:test_for_parent
 
+scoreboard players set @e[type=armor_stand,tag=block] depth -1
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] depth 0
+scoreboard players set #depth global 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] temp 1
+function animations:depth
+
 # compute and apply parented transformations
+
+## set identity matrix if no parent
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_0 -1000
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_1 0
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_2 0
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_3 0
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_4 1000
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_5 0
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_6 0
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_7 0
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_8 1000
+
+scoreboard players set #depth global 0
 function animations:transform
 
 # edit mode

@@ -92,14 +92,6 @@ scoreboard objectives add correction_y dummy
 scoreboard objectives add correction_z dummy
 
 # for animations
-scoreboard objectives add anim_offset_x dummy
-scoreboard objectives add anim_offset_y dummy
-scoreboard objectives add anim_offset_z dummy
-
-scoreboard objectives add anim_rot_x dummy
-scoreboard objectives add anim_rot_y dummy
-scoreboard objectives add anim_rot_z dummy
-
 scoreboard objectives add anim_length dummy
 scoreboard objectives add loop dummy
 scoreboard objectives add time dummy
@@ -107,7 +99,7 @@ scoreboard objectives add interpol_type dummy
 
 # for edit mode
 scoreboard objectives add edit dummy
-scoreboard objectives add steps dummy
+scoreboard objectives add depth dummy
 
 team add hover
 team add parent_glow
@@ -125,7 +117,7 @@ team modify delete color dark_red
 
 # set constants
 scoreboard players set #-1 constants -1
-scoreboard players set #24 constants 24
+scoreboard players set #16 constants 16
 scoreboard players set #1000 constants 1000
 scoreboard players set #90000 constants 90000
 scoreboard players set #180000 constants 180000

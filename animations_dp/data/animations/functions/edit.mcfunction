@@ -2,6 +2,9 @@
 execute as @e[type=armor_stand,tag=new] run data merge entity @s {Rotation:[0.0f,0.0f]}
 execute as @e[type=armor_stand,tag=new] at @s run tp ~ ~-0.226 ~
 execute as @e[type=armor_stand,tag=new] run tag @s add block
+execute as @e[type=armor_stand,tag=new] store result score @s initial_offset_x run data get entity @s Pos[0] 1000
+execute as @e[type=armor_stand,tag=new] store result score @s initial_offset_y run data get entity @s Pos[1] 1000
+execute as @e[type=armor_stand,tag=new] store result score @s initial_offset_z run data get entity @s Pos[2] 1000
 execute as @e[type=armor_stand,tag=new] run tag @s remove new
 
 # set block
@@ -18,6 +21,7 @@ team join parent_glow @e[type=armor_stand,tag=block,tag=parent_glow]
 team join add_parent @e[type=armor_stand,tag=block,scores={edit=4}]
 team join add_parent @e[type=armor_stand,tag=block,tag=awaiting_parent]
 team join select_parent @e[type=armor_stand,tag=block,scores={edit=9}]
+team join remove_parent @e[type=armor_stand,tag=block,scores={edit=5}]
 team join delete @e[type=armor_stand,tag=block,scores={edit=8}]
 
 execute as @e[type=armor_stand,tag=!glow] run data merge entity @s {Glowing:0b}
