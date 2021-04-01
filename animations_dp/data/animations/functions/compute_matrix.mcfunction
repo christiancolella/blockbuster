@@ -7,6 +7,7 @@
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_0 = @s self_cos_y
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_0 *= @s self_cos_z
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_0 /= #1000 constants
+execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_0 *= #-1 constants
 
 # element 1
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_1 = @s self_sin_x
@@ -18,6 +19,7 @@ execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s temp *= @s self_sin_z
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_1 -= @s temp
+execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_1 *= #-1 constants
 
 # element 2
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_2 = @s self_sin_x
@@ -29,6 +31,7 @@ execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s temp *= @s self_cos_z
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_2 += @s temp
+execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_2 *= #-1 constants
 
 # element 3
 execute as @e[type=armor_stand,tag=is_parent] run scoreboard players operation @s self_matrix_3 = @s self_cos_y

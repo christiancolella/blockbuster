@@ -121,17 +121,14 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s correction_x
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_matrix_0
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #-1 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_pos_x += @s temp
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s correction_y
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_matrix_1
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #-1 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_pos_x += @s temp
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s correction_z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_matrix_2
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #-1 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_pos_x += @s temp
 
 ## y position component

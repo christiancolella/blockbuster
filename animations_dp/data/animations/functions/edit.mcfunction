@@ -22,7 +22,9 @@ team join add_parent @e[type=armor_stand,tag=block,scores={edit=4}]
 team join add_parent @e[type=armor_stand,tag=block,tag=awaiting_parent]
 team join select_parent @e[type=armor_stand,tag=block,scores={edit=9}]
 team join remove_parent @e[type=armor_stand,tag=block,scores={edit=5}]
+team join hide @e[type=armor_stand,tag=block,scores={edit=6}]
 team join delete @e[type=armor_stand,tag=block,scores={edit=8}]
+team join transform @e[type=armor_stand,tag=block,scores={edit=10..17}]
 
 execute as @e[type=armor_stand,tag=!glow] run data merge entity @s {Glowing:0b}
 execute as @e[type=armor_stand,tag=glow] run data merge entity @s {Glowing:1b}
@@ -58,10 +60,10 @@ execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.7 air
 execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.8 air
 
 ## transform
-execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.0 netherite_boots{display:{Name:"{\"text\":\"Move +1/2\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:10}
-execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.1 netherite_boots{display:{Name:"{\"text\":\"Move -1/2\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:11}
-execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.2 netherite_boots{display:{Name:"{\"text\":\"Move +1/16\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:12}
-execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.3 netherite_boots{display:{Name:"{\"text\":\"Move -1/16\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:13}
+execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.0 netherite_boots{display:{Name:"{\"text\":\"Move Forwards 1/2 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:10}
+execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.1 netherite_boots{display:{Name:"{\"text\":\"Move Backwards 1/2 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:11}
+execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.2 netherite_boots{display:{Name:"{\"text\":\"Move Forwards 1/16 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:12}
+execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.3 netherite_boots{display:{Name:"{\"text\":\"Move Backwards 1/16 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:13}
 execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.4 netherite_boots{display:{Name:"{\"text\":\"Rotate 15° Clockwise\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:14}
 execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.5 netherite_boots{display:{Name:"{\"text\":\"Rotate 15° Counter-clockwise\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:15}
 execute as @a[scores={edit=4}] run replaceitem entity @s hotbar.6 netherite_boots{display:{Name:"{\"text\":\"Rotate 2.5° Clockwise\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:16}
@@ -108,10 +110,10 @@ execute as @a[scores={edit=10}] run replaceitem entity @s hotbar.7 air
 execute as @a[scores={edit=10}] run replaceitem entity @s hotbar.8 netherite_boots{display:{Name:"{\"text\":\"Back\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}
 
 ## transform from animate
-execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.0 netherite_boots{display:{Name:"{\"text\":\"Move +1/2\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:10}
-execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.1 netherite_boots{display:{Name:"{\"text\":\"Move -1/2\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:11}
-execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.2 netherite_boots{display:{Name:"{\"text\":\"Move +1/16\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:12}
-execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.3 netherite_boots{display:{Name:"{\"text\":\"Move -1/16\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:13}
+execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.0 netherite_boots{display:{Name:"{\"text\":\"Move Forwards 1/2 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:10}
+execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.1 netherite_boots{display:{Name:"{\"text\":\"Move Backwards 1/2 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:11}
+execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.2 netherite_boots{display:{Name:"{\"text\":\"Move Forwards 1/16 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:12}
+execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.3 netherite_boots{display:{Name:"{\"text\":\"Move Backwards 1/16 blocks\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:13}
 execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.4 netherite_boots{display:{Name:"{\"text\":\"Rotate 15° Clockwise\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:14}
 execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.5 netherite_boots{display:{Name:"{\"text\":\"Rotate 15° Counter-clockwise\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:15}
 execute as @a[scores={edit=11}] run replaceitem entity @s hotbar.6 netherite_boots{display:{Name:"{\"text\":\"Rotate 2.5° Clockwise\",\"color\":\"aqua\",\"italic\":false}"},CustomModelData:16}

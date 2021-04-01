@@ -1,4 +1,4 @@
-execute as @e[type=armor_stand,tag=has_parent,scores={temp=0},limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=has_parent,scores={global=1,temp=0},limit=1] run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=is_parent] if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_0 = @s self_uuid_0 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_1 = @s self_uuid_1 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_2 = @s self_uuid_2 if score @e[type=armor_stand,scores={temp=1},limit=1] parent_uuid_3 = @s self_uuid_3 run scoreboard players set @s temp 2
 
 # retrieve parent position
@@ -38,5 +38,5 @@ scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_matrix_
 scoreboard players set @e[type=armor_stand,scores={temp=1}] temp 3
 scoreboard players set @e[type=armor_stand,scores={temp=2}] temp 0
 
-execute if entity @e[type=armor_stand,tag=has_parent,scores={temp=0}] run function animations:retrieve_from_parent
+execute if entity @e[type=armor_stand,tag=has_parent,scores={global=1,temp=0}] run function animations:retrieve_from_parent
 scoreboard players set @e[type=armor_stand,tag=has_parent] temp 0

@@ -51,7 +51,7 @@ function animations:depth
 # compute and apply parented transformations
 
 ## set identity matrix if no parent
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_0 -1000
+scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_0 1000
 scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_1 0
 scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_2 0
 scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_3 0

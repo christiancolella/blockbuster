@@ -106,18 +106,26 @@ team add parent_glow
 team add add_parent
 team add remove_parent
 team add select_parent
+team add hide
 team add delete
+team add transform
 
 team modify hover color blue
 team modify parent_glow color dark_blue
 team modify add_parent color yellow
 team modify remove_parent color red
 team modify select_parent color gold
+team modify hide color dark_gray
 team modify delete color dark_red
+team modify transform color aqua
+
+title @a times 5 0 5
 
 # set constants
 scoreboard players set #-1 constants -1
 scoreboard players set #16 constants 16
+scoreboard players set #10 constants 10
+scoreboard players set #100 constants 100
 scoreboard players set #1000 constants 1000
 scoreboard players set #90000 constants 90000
 scoreboard players set #180000 constants 180000
