@@ -123,9 +123,8 @@ title @a times 5 0 5
 
 # set constants
 scoreboard players set #-1 constants -1
-scoreboard players set #16 constants 16
 scoreboard players set #10 constants 10
-scoreboard players set #100 constants 100
+scoreboard players set #24 constants 24
 scoreboard players set #1000 constants 1000
 scoreboard players set #90000 constants 90000
 scoreboard players set #180000 constants 180000

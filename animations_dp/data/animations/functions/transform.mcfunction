@@ -42,7 +42,7 @@ execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard 
 execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x /= #16 constants
+execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x /= #24 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x += @s initial_offset_x
 
 
@@ -77,7 +77,7 @@ execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard 
 execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y /= #16 constants
+execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y /= #24 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y += @s initial_offset_y
 
 ## z
@@ -111,7 +111,7 @@ execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard 
 execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z /= #16 constants
+execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z /= #24 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z += @s initial_offset_z
 
 # apply transformations
@@ -168,14 +168,6 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_y += @s initial_rot_y
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_z = @s parent_rot_z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_z += @s initial_rot_z
-
-# merge transformations
-execute as @e[type=armor_stand,tag=block,scores={global=1}] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
-execute as @e[type=armor_stand,tag=block,scores={global=1}] store result entity @s Pos[1] double 0.001 run scoreboard players get @s self_pos_y
-execute as @e[type=armor_stand,tag=block,scores={global=1}] store result entity @s Pos[2] double 0.001 run scoreboard players get @s self_pos_z
-execute as @e[type=armor_stand,tag=block,scores={global=1}] store result entity @s Pose.Head[0] float 0.001 run scoreboard players get @s self_rot_x
-execute as @e[type=armor_stand,tag=block,scores={global=1}] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
-execute as @e[type=armor_stand,tag=block,scores={global=1}] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
 
 # repeat at next layer
 scoreboard players set @e[type=armor_stand,tag=block] global 0
