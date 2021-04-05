@@ -57,7 +57,7 @@ execute as @a[scores={edit=9,global=11,temp=1}] run scoreboard players set @s ed
 execute as @a[scores={edit=9,global=1,temp=1}] run scoreboard players set @s edit 5
 
 ## keyframe
-execute as @a[scores={edit=10..11,global=31,temp=1}] run scoreboard players set @s edit 12
+execute as @a[scores={edit=10..11,global=33,temp=1}] run scoreboard players set @s edit 12
 execute as @a[scores={edit=10..11,global=1,temp=1}] run scoreboard players set @s edit 5
 
 ## transitions
