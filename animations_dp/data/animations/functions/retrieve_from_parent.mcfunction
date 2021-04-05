@@ -16,6 +16,10 @@ scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_omega_x
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_omega_y = @e[type=armor_stand,scores={temp=2}] self_omega_y
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_omega_z = @e[type=armor_stand,scores={temp=2}] self_omega_z
 
+scoreboard players operation @e[type=armor_stand,scores={temp=1}] self_omega_x += @e[type=armor_stand,scores={temp=1}] parent_omega_x
+scoreboard players operation @e[type=armor_stand,scores={temp=1}] self_omega_y += @e[type=armor_stand,scores={temp=1}] parent_omega_y
+scoreboard players operation @e[type=armor_stand,scores={temp=1}] self_omega_z += @e[type=armor_stand,scores={temp=1}] parent_omega_z
+
 # retrieve parent trig
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_cos_x = @e[type=armor_stand,scores={temp=2}] self_cos_x
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_cos_y = @e[type=armor_stand,scores={temp=2}] self_cos_y

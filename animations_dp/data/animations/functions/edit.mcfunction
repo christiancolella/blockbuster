@@ -17,6 +17,9 @@ execute as @e[type=armor_stand,tag=new] run tag @s add block
 execute as @e[type=armor_stand,tag=new] store result score @s initial_offset_x run data get entity @s Pos[0] 1000
 execute as @e[type=armor_stand,tag=new] store result score @s initial_offset_y run data get entity @s Pos[1] 1000
 execute as @e[type=armor_stand,tag=new] store result score @s initial_offset_z run data get entity @s Pos[2] 1000
+scoreboard players set @e[type=armor_stand,tag=new] matrix_scale_x 1000
+scoreboard players set @e[type=armor_stand,tag=new] matrix_scale_y 1000
+scoreboard players set @e[type=armor_stand,tag=new] matrix_scale_z 1000
 execute as @e[type=armor_stand,tag=new] run tag @s remove new
 
 # set block type
@@ -61,12 +64,12 @@ execute as @a[scores={edit=1..2}] run replaceitem entity @s hotbar.7 air
 execute as @a[scores={edit=1..2}] run replaceitem entity @s hotbar.8 netherite_boots{display:{Name:"{\"text\":\"Exit\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}
 
 ## add parent
-execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.0 netherite_boots{display:{Name:"{\"text\":\"Select Parent\",\"color\":\"gold\",\"italic\":false}"},CustomModelData:9}
-execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.1 netherite_boots{display:{Name:"{\"text\":\"Cancel\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}
+execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.0 air
+execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.1 air
 execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.2 air
-execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.3 air
+execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.3 netherite_boots{display:{Name:"{\"text\":\"Select Parent\",\"color\":\"gold\",\"italic\":false}"},CustomModelData:9}
 execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.4 air
-execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.5 air
+execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.5 netherite_boots{display:{Name:"{\"text\":\"Cancel\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}
 execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.6 air
 execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.7 air
 execute as @a[scores={edit=3}] run replaceitem entity @s hotbar.8 air

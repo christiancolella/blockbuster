@@ -64,6 +64,10 @@ scoreboard objectives add parent_matrix_6 dummy
 scoreboard objectives add parent_matrix_7 dummy
 scoreboard objectives add parent_matrix_8 dummy
 
+scoreboard objectives add matrix_scale_x dummy
+scoreboard objectives add matrix_scale_y dummy
+scoreboard objectives add matrix_scale_z dummy
+
 scoreboard objectives add has_rot dummy
 scoreboard objectives add has_hand_item dummy
 
@@ -90,6 +94,8 @@ scoreboard objectives add parent_omega_z dummy
 scoreboard objectives add correction_x dummy
 scoreboard objectives add correction_y dummy
 scoreboard objectives add correction_z dummy
+
+scoreboard objectives add correction_scale dummy
 
 # for animations
 scoreboard objectives add anim_length dummy
@@ -126,9 +132,11 @@ data merge storage animations:main {signs:["","","","","",""]}
 # set constants
 scoreboard players set #-1 constants -1
 scoreboard players set #10 constants 10
-scoreboard players set #24 constants 24
+scoreboard players set #13 constants 13
 scoreboard players set #100 constants 100
+scoreboard players set #110 constants 110
 scoreboard players set #1000 constants 1000
+scoreboard players set #15820 constants 15820
 scoreboard players set #90000 constants 90000
 scoreboard players set #180000 constants 180000
 scoreboard players set #360000 constants 360000
