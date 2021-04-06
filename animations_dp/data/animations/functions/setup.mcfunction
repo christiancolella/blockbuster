@@ -106,32 +106,49 @@ scoreboard objectives add transition_type dummy
 scoreboard objectives add edit dummy
 scoreboard objectives add depth dummy
 
-team add hover
-team add parent_glow
-team add add_parent
-team add remove_parent
-team add select_parent
-team add hide
-team add delete
-team add transform
+team add black
+team add dark_blue
+team add dark_green
+team add dark_aqua
+team add dark_red
+team add dark_purple
+team add gold
+team add gray
+team add dark_gray
+team add blue
+team add green
+team add aqua
+team add red
+team add light_purple
+team add yellow
+team add white
 
-team modify hover color blue
-team modify parent_glow color dark_blue
-team modify add_parent color yellow
-team modify remove_parent color red
-team modify select_parent color gold
-team modify hide color dark_gray
-team modify delete color dark_red
-team modify transform color aqua
+team modify black color black
+team modify dark_blue color dark_blue
+team modify dark_green color dark_green
+team modify dark_aqua color dark_aqua
+team modify dark_red color dark_red
+team modify dark_purple color dark_purple
+team modify gold color gold
+team modify gray color gray
+team modify dark_gray color dark_gray
+team modify blue color blue
+team modify green color green
+team modify aqua color aqua
+team modify red color red
+team modify light_purple color light_purple
+team modify yellow color yellow
+team modify white color white
 
 title @a times 5 0 5
 
-data merge storage animations:main {signs:["","","","","",""]}
-
 # set constants
 scoreboard players set #-1 constants -1
+scoreboard players set #2 constants 2
+scoreboard players set #5 constants 5
 scoreboard players set #10 constants 10
 scoreboard players set #13 constants 13
+scoreboard players set #20 constants 20
 scoreboard players set #100 constants 100
 scoreboard players set #110 constants 110
 scoreboard players set #1000 constants 1000

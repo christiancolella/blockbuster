@@ -39,6 +39,10 @@ scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_matrix_
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_matrix_7 = @e[type=armor_stand,scores={temp=2}] self_matrix_7
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] parent_matrix_8 = @e[type=armor_stand,scores={temp=2}] self_matrix_8
 
+# retrieve animation data
+scoreboard players operation @e[type=armor_stand,scores={temp=1}] anim_length = @e[type=armor_stand,scores={temp=2}] anim_length
+scoreboard players operation @e[type=armor_stand,scores={temp=1}] time = @e[type=armor_stand,scores={temp=2}] time
+
 scoreboard players set @e[type=armor_stand,scores={temp=1}] temp 3
 scoreboard players set @e[type=armor_stand,scores={temp=2}] temp 0
 
