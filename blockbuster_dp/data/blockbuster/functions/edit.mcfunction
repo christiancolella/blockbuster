@@ -14,9 +14,9 @@ execute as @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:bee_spaw
 execute as @e[type=armor_stand,tag=new_block] run data merge entity @s {Rotation:[0.0f,0.0f]}
 execute as @e[type=armor_stand,tag=new_block] at @s run tp ~ ~-0.226 ~
 execute as @e[type=armor_stand,tag=new_block] run tag @s add block
-execute as @e[type=armor_stand,tag=new_block] store result score @s initial_offset_x run data get entity @s Pos[0] 1000
-execute as @e[type=armor_stand,tag=new_block] store result score @s initial_offset_y run data get entity @s Pos[1] 1000
-execute as @e[type=armor_stand,tag=new_block] store result score @s initial_offset_z run data get entity @s Pos[2] 1000
+execute as @e[type=armor_stand,tag=new_block] store result score @s initial_pos_x run data get entity @s Pos[0] 1000
+execute as @e[type=armor_stand,tag=new_block] store result score @s initial_pos_y run data get entity @s Pos[1] 1000
+execute as @e[type=armor_stand,tag=new_block] store result score @s initial_pos_z run data get entity @s Pos[2] 1000
 scoreboard players set @e[type=armor_stand,tag=new_block] anim_length 20
 scoreboard players set @e[type=armor_stand,tag=new_block] time 0
 execute as @e[type=armor_stand,tag=new_block] run tag @s remove new_block
@@ -28,6 +28,7 @@ execute as @e[type=armor_stand,tag=block] run data merge entity @s {HandItems:[{
 
 # visual stuff
 tag @e[type=armor_stand,tag=block] remove glow
+tag @e[type=armor_stand] remove parent_glow
 function blockbuster:ray/setup
 
 team join blue @e[type=armor_stand,tag=block]

@@ -71,9 +71,9 @@ scoreboard objectives add matrix_scale_z dummy
 scoreboard objectives add has_rot dummy
 scoreboard objectives add has_hand_item dummy
 
-scoreboard objectives add initial_offset_x dummy
-scoreboard objectives add initial_offset_y dummy
-scoreboard objectives add initial_offset_z dummy
+scoreboard objectives add initial_pos_x dummy
+scoreboard objectives add initial_pos_y dummy
+scoreboard objectives add initial_pos_z dummy
 
 scoreboard objectives add initial_rot_x dummy
 scoreboard objectives add initial_rot_y dummy
@@ -111,18 +111,25 @@ scoreboard objectives add delta_time dummy
 scoreboard objectives add from_pos_x dummy
 scoreboard objectives add from_pos_y dummy
 scoreboard objectives add from_pos_z dummy
+scoreboard objectives add from_pos_time dummy
 
 scoreboard objectives add to_pos_x dummy
 scoreboard objectives add to_pos_y dummy
 scoreboard objectives add to_pos_z dummy
+scoreboard objectives add to_pos_time dummy
 
 scoreboard objectives add from_rot_x dummy
 scoreboard objectives add from_rot_y dummy
 scoreboard objectives add from_rot_z dummy
+scoreboard objectives add from_rot_time dummy
 
 scoreboard objectives add to_rot_x dummy
 scoreboard objectives add to_rot_y dummy
 scoreboard objectives add to_rot_z dummy
+scoreboard objectives add to_rot_time dummy
+
+scoreboard objectives add pos_time_fraction dummy
+scoreboard objectives add rot_time_fraction dummy
 
 # for edit mode
 scoreboard objectives add edit dummy

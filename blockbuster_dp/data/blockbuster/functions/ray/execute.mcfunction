@@ -6,7 +6,6 @@ execute as @e[type=armor_stand,tag=ray] run scoreboard players operation @e[type
 tag @e[type=armor_stand,tag=block,scores={temp=1}] add glow
 
 ## relay to parent
-tag @e[type=armor_stand] remove parent_glow
 execute as @e[type=armor_stand,tag=block,tag=!hidden] if score @s self_uuid_0 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_0 if score @s self_uuid_1 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_1 if score @s self_uuid_2 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_2 if score @s self_uuid_3 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_3 run tag @s add parent_glow
 
 ## relay to player
@@ -37,12 +36,12 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] pare
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_1
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_offset_x = @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_offset_x -= @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_offset_y = @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_offset_y -= @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_offset_z = @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_z
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_offset_z -= @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_z
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x -= @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y -= @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_z
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z -= @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_z
 tag @e[type=armor_stand,tag=block,scores={temp=2}] remove awaiting_parent
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
@@ -92,86 +91,86 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## forwards 2
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=12}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 2000
-execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 2000
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 2000
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## backwards 2
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=13}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 2000
-execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 2000
-execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 2000
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 2000
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 2000
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## forwards 1/2
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=14}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 500
-execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 500
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 500
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## backwards 1/2
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=15}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 500
-execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 500
-execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 500
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 500
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## forwards 1/16
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=16}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 62
-execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 62
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 62
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## backwards 1/16
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=17}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_offset_x 62
-execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 62
-execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] initial_pos_x 62
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 62
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y 62
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # rotate
 
 ## 90d clockwise
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=37}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=39}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 90000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x 90000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 90000
@@ -182,7 +181,7 @@ execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players a
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## 90d counter clockwise
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=38}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=40}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 90000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x 90000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 90000
@@ -193,7 +192,7 @@ execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players r
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## 15d clockwise
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=39}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=41}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 15000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x 15000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 15000
@@ -204,7 +203,7 @@ execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players a
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## 15d counter clockwise
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=40}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=42}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 15000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x 15000
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 15000
@@ -215,7 +214,7 @@ execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players r
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## 2.5d clockwise
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=41}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=43}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 2500
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x 2500
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 2500
@@ -226,7 +225,7 @@ execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players a
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## 2.5d counter clockwise
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=42}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=44}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 2500
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x 2500
 execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z 2500
@@ -246,7 +245,7 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## remove 0.25 seconds
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=46}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score @s anim_length matches 5.. run scoreboard players remove @s anim_length 5
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score @s anim_length matches 6.. run scoreboard players remove @s anim_length 5
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
@@ -258,7 +257,7 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## remove 0.05 seconds
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=48}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
-execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score @s anim_length matches 1.. run scoreboard players remove @s anim_length 1
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score @s anim_length matches 2.. run scoreboard players remove @s anim_length 1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
@@ -329,9 +328,9 @@ scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_1
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
-scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_x
-scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y
-scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_pos_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_pos_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
 scoreboard players set @e[type=armor_stand,tag=new_keyframe] keyframe_type 1
 scoreboard players set @e[type=armor_stand,tag=new_keyframe] transition_type 1
 tag @e[tag=new_keyframe] add keyframe
@@ -363,9 +362,9 @@ scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_1
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
-scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_x
-scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y
-scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_pos_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_pos_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_y
 scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z
@@ -389,9 +388,10 @@ data merge storage blockbuster:main {signs:["","","","","",""]}
 data merge storage blockbuster:main {timeline:["","","","","","","","","","","","","","","","","","","",""]}
 data merge storage blockbuster:main {timeline_short:["","","","",""]}
 
-scoreboard players operation #x_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_offset_x
+scoreboard players operation #x_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_pos_x
 execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run scoreboard players remove #x_pos global 500
-execute if score #x_pos global matches ..-1 run data modify storage blockbuster:main signs[0] set value "-"
+execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] if score #x_pos global matches ..-1 run data modify storage blockbuster:main signs[0] set value "-"
+execute if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] if score #x_pos global matches 1.. run data modify storage blockbuster:main signs[0] set value "-"
 execute if score #x_pos global matches ..-1 run scoreboard players operation #x_pos global *= #-1 constants
 scoreboard players operation #x_pos_int global = #x_pos global
 scoreboard players operation #x_pos_int global /= #1000 constants
@@ -405,7 +405,7 @@ scoreboard players operation #x_pos_dec_1 global /= #10 constants
 scoreboard players operation #x_pos_dec_2 global = #x_pos_dec global
 scoreboard players operation #x_pos_dec_2 global %= #10 constants
 
-scoreboard players operation #y_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_offset_y
+scoreboard players operation #y_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_pos_y
 execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run scoreboard players add #y_pos global 226
 execute if score #y_pos global matches ..-1 run data modify storage blockbuster:main signs[1] set value "-"
 execute if score #y_pos global matches ..-1 run scoreboard players operation #y_pos global *= #-1 constants
@@ -421,7 +421,7 @@ scoreboard players operation #y_pos_dec_1 global /= #10 constants
 scoreboard players operation #y_pos_dec_2 global = #y_pos_dec global
 scoreboard players operation #y_pos_dec_2 global %= #10 constants
 
-scoreboard players operation #z_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_offset_z
+scoreboard players operation #z_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_pos_z
 execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run scoreboard players remove #z_pos global 500
 execute if score #z_pos global matches ..-1 run data modify storage blockbuster:main signs[2] set value "-"
 execute if score #z_pos global matches ..-1 run scoreboard players operation #z_pos global *= #-1 constants
@@ -453,7 +453,7 @@ scoreboard players operation #x_rot_dec_2 global = #x_rot_dec global
 scoreboard players operation #x_rot_dec_2 global %= #10 constants
 
 scoreboard players operation #y_rot global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_rot_y
-execute if score #y_rot global matches ..-1 run data modify storage blockbuster:main signs[4] set value "-"
+execute if score #y_rot global matches 1.. run data modify storage blockbuster:main signs[4] set value "-"
 execute if score #y_rot global matches ..-1 run scoreboard players operation #y_rot global *= #-1 constants
 scoreboard players operation #y_rot_int global = #y_rot global
 scoreboard players operation #y_rot_int global /= #1000 constants
@@ -468,7 +468,7 @@ scoreboard players operation #y_rot_dec_2 global = #y_rot_dec global
 scoreboard players operation #y_rot_dec_2 global %= #10 constants
 
 scoreboard players operation #z_rot global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_rot_z
-execute if score #z_rot global matches ..-1 run data modify storage blockbuster:main signs[5] set value "-"
+execute if score #z_rot global matches 1.. run data modify storage blockbuster:main signs[5] set value "-"
 execute if score #z_rot global matches ..-1 run scoreboard players operation #z_rot global *= #-1 constants
 scoreboard players operation #z_rot_int global = #z_rot global
 scoreboard players operation #z_rot_int global /= #1000 constants
@@ -582,10 +582,10 @@ execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=15}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=15}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
 
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"text":"Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"text":"Relative Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=16}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=16}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"text":"Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"text":"Relative Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=16}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=16}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
 
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=18..20}] if entity @e[type=armor_stand,tag=block,scores={temp=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=22..28}] if entity @e[type=armor_stand,tag=block,scores={temp=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
