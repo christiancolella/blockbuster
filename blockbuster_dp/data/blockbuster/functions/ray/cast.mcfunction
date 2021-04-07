@@ -12,11 +12,13 @@ execute as @e[type=armor_stand,tag=block,tag=!hidden] if score @s self_uuid_0 = 
 ## relay to player
 execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,tag=has_parent,distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=1,temp=1}] edit 2
 execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,tag=!has_parent,distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=2,temp=1}] edit 1
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,scores={play=1},distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=5,temp=1}] edit 6
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,scores={play=0},distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=6,temp=1}] edit 5
 
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # execute
-execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run function animations:ray/execute
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run function blockbuster:ray/execute
 
 ## unhide all
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=7}] run scoreboard players set @e[type=armor_stand,tag=block,tag=hidden] temp 1
@@ -33,5 +35,5 @@ execute as @e[type=armor_stand,tag=block] run data modify entity @s ArmorItems[0
 # repeat
 scoreboard players add #steps global 1
 execute as @e[type=armor_stand,tag=ray] at @s run tp @s ^ ^ ^0.5
-execute if entity @e[type=armor_stand,tag=ray] run function animations:ray/cast
+execute if entity @e[type=armor_stand,tag=ray] run function blockbuster:ray/cast
 scoreboard players set #steps global 0

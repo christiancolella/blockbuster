@@ -70,7 +70,7 @@ execute if score #input_cos global matches 45001..90000 run scoreboard players s
 execute if score #range_cos global matches 1 run scoreboard players operation #input_cos global -= #90000 constants
 execute if score #range_cos global matches 1 run scoreboard players operation #input_cos global *= #-1 constants
 execute if score #range_cos global matches 1 run scoreboard players operation #input_sin global = #input_cos global
-execute if score #range_cos global matches 1 run function animations:math/sin
+execute if score #range_cos global matches 1 run function blockbuster:math/sin
 execute if score #range_cos global matches 1 run scoreboard players operation #output_cos global = #output_sin global
 execute if score #range_cos global matches 1 run scoreboard players set #range_cos global 0
 

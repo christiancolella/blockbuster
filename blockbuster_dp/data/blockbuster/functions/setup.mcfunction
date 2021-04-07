@@ -100,6 +100,8 @@ scoreboard objectives add correction_scale dummy
 # for animations
 scoreboard objectives add anim_length dummy
 scoreboard objectives add time dummy
+scoreboard objectives add play dummy
+scoreboard objectives add keyframe_type dummy
 scoreboard objectives add transition_type dummy
 
 # for edit mode

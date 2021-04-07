@@ -80,11 +80,11 @@ execute as @a[scores={edit=15,global=1,temp=1}] run scoreboard players set @s ed
 execute as @a[scores={temp=1},nbt={SelectedItem:{id:"minecraft:netherite_boots"}}] store result score @e[type=armor_stand,tag=ray] edit run data get entity @s SelectedItem.tag.CustomModelData
 execute as @e[type=armor_stand,tag=block,tag=!hidden,nbt={ArmorItems:[{id:"minecraft:netherite_boots"}]}] run tag @e[type=armor_stand,tag=ray] add execute
 execute if entity @a[scores={temp=1},nbt={Inventory:[{Slot:100b,id:"minecraft:netherite_boots"}]}] run tag @e[type=armor_stand,tag=ray] add execute
-function animations:ray/cast
+function blockbuster:ray/cast
 replaceitem entity @a[scores={temp=1}] armor.feet air
 
 # repeat
 scoreboard players set @a[scores={temp=1}] temp 2
-execute if entity @a[scores={edit=1..,temp=0}] run function animations:ray/setup
+execute if entity @a[scores={edit=1..,temp=0}] run function blockbuster:ray/setup
 scoreboard players set @a global 0
 scoreboard players set @a temp 0

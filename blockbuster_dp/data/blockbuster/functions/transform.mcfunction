@@ -1,9 +1,9 @@
 execute as @e[type=armor_stand,tag=block] if score @s depth = #depth global run scoreboard players set @s global 1
 
 # compute transformations
-function animations:compute_trig
-function animations:compute_matrix
-function animations:retrieve_from_parent
+function blockbuster:compute_trig
+function blockbuster:compute_matrix
+function blockbuster:retrieve_from_parent
 
 # compute render corrections
 
@@ -240,4 +240,4 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 # repeat at next layer
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players add #depth global 1
-execute if score #depth global <= #maxdepth global run function animations:transform
+execute if score #depth global <= #maxdepth global run function blockbuster:transform

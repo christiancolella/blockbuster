@@ -45,13 +45,13 @@ execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s la
 # check relations and add tags
 tag @e[type=armor_stand,tag=block] remove is_parent
 tag @e[type=armor_stand,tag=block] remove has_parent
-function animations:test_for_parent
+function blockbuster:test_for_parent
 
 scoreboard players set @e[type=armor_stand,tag=block] depth -1
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] depth 0
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] temp 1
-function animations:depth
+function blockbuster:depth
 
 # compute and apply parented transformations
 
@@ -67,7 +67,7 @@ scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_7 0
 scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_8 1000
 
 scoreboard players set #depth global 0
-function animations:transform
+function blockbuster:transform
 
 ## merge transformations
 execute as @e[type=armor_stand,tag=block] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
@@ -78,4 +78,7 @@ execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[1] fl
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
 
 # edit mode
-function animations:edit
+function blockbuster:edit
+
+# animate
+function blockbuster:animate

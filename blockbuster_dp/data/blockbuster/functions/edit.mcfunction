@@ -28,7 +28,7 @@ execute as @e[type=armor_stand,tag=block] run data merge entity @s {HandItems:[{
 
 # visual stuff
 tag @e[type=armor_stand,tag=block] remove glow
-function animations:ray/setup
+function blockbuster:ray/setup
 
 team join blue @e[type=armor_stand,tag=block]
 team join dark_blue @e[type=armor_stand,tag=block,tag=parent_glow]
@@ -45,6 +45,8 @@ team join dark_purple @e[type=armor_stand,tag=block,scores={edit=29..31}]
 team join red @e[type=armor_stand,tag=block,scores={edit=32}]
 team join dark_purple @e[type=armor_stand,tag=block,scores={edit=49..51}]
 team join dark_blue @e[type=armor_stand,tag=block,scores={edit=34..38}]
+team join green @e[type=armor_stand,tag=block,scores={edit=18}]
+team join red @e[type=armor_stand,tag=block,scores={edit=19}]
 
 execute as @e[type=armor_stand,tag=!glow] run data merge entity @s {Glowing:0b}
 execute as @e[type=armor_stand,tag=glow] run data merge entity @s {Glowing:1b}

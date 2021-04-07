@@ -2,9 +2,10 @@ execute as @e[type=armor_stand,tag=block] if score @e[type=armor_stand,tag=block
 
 scoreboard players operation @e[type=armor_stand,tag=block,scores={global=2}] anim_length = @e[type=armor_stand,tag=block,scores={global=1}] anim_length
 scoreboard players operation @e[type=armor_stand,tag=block,scores={global=2}] time = @e[type=armor_stand,tag=block,scores={global=1}] time
+scoreboard players operation @e[type=armor_stand,tag=block,scores={global=2}] play = @e[type=armor_stand,tag=block,scores={global=1}] play
 
 # loop until reaching base parent
 scoreboard players set @e[type=armor_stand,tag=block,scores={global=1}] global 0
 scoreboard players set @e[type=armor_stand,tag=block,scores={global=2}] global 1
-execute if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={global=1}] run function animations:pass_to_parent
+execute if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={global=1}] run function blockbuster:pass_to_parent
 scoreboard players set @e[type=armor_stand,tag=block] global 0
