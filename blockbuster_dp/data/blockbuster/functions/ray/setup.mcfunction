@@ -34,8 +34,8 @@ execute as @a[scores={edit=3,global=1,temp=1}] as @e[type=armor_stand,tag=block]
 execute as @a[scores={edit=3,global=1,temp=1}] run scoreboard players set @s edit 1
 
 ## transform
-execute as @a[scores={edit=4,global=10,temp=1}] run scoreboard players set @s edit 12
-execute as @a[scores={edit=4,global=11,temp=1}] run scoreboard players set @s edit 13
+execute as @a[scores={edit=4,global=10,temp=1}] run scoreboard players set @s edit 13
+execute as @a[scores={edit=4,global=11,temp=1}] run scoreboard players set @s edit 14
 execute as @a[scores={edit=4,global=1,temp=1}] run scoreboard players set @s edit 1
 
 ## animate
@@ -52,28 +52,28 @@ execute as @a[scores={edit=7,global=1,temp=1}] run scoreboard players set @s edi
 execute as @a[scores={edit=8,global=1,temp=1}] run scoreboard players set @s edit 7
 
 ## transform from animate
-execute as @a[scores={edit=9,global=10,temp=1}] run scoreboard players set @s edit 14
-execute as @a[scores={edit=9,global=11,temp=1}] run scoreboard players set @s edit 15
+execute as @a[scores={edit=9,global=10,temp=1}] run scoreboard players set @s edit 15
+execute as @a[scores={edit=9,global=11,temp=1}] run scoreboard players set @s edit 16
 execute as @a[scores={edit=9,global=1,temp=1}] run scoreboard players set @s edit 5
 
 ## keyframe
-execute as @a[scores={edit=10,global=33,temp=1}] run scoreboard players set @s edit 11
-execute as @a[scores={edit=10,global=1,temp=1}] run scoreboard players set @s edit 5
+execute as @a[scores={edit=11,global=33,temp=1}] run scoreboard players set @s edit 12
+execute as @a[scores={edit=10..11,global=1,temp=1}] run scoreboard players set @s edit 5
 
 ## transitions
-execute as @a[scores={edit=11,global=1,temp=1}] run scoreboard players set @s edit 10
+execute as @a[scores={edit=12,global=1,temp=1}] run scoreboard players set @s edit 10
 
 ## move
-execute as @a[scores={edit=12,global=1,temp=1}] run scoreboard players set @s edit 4
-
-## rotate
 execute as @a[scores={edit=13,global=1,temp=1}] run scoreboard players set @s edit 4
 
+## rotate
+execute as @a[scores={edit=14,global=1,temp=1}] run scoreboard players set @s edit 4
+
 ## move from animate
-execute as @a[scores={edit=14,global=1,temp=1}] run scoreboard players set @s edit 9
+execute as @a[scores={edit=15,global=1,temp=1}] run scoreboard players set @s edit 9
 
 ## rotate from animate
-execute as @a[scores={edit=15,global=1,temp=1}] run scoreboard players set @s edit 9
+execute as @a[scores={edit=16,global=1,temp=1}] run scoreboard players set @s edit 9
 
 
 # send data to ray

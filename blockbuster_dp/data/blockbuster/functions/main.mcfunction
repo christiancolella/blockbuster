@@ -56,15 +56,15 @@ function blockbuster:depth
 # compute and apply parented transformations
 
 ## set identity matrix if no parent
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_0 1000
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_1 0
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_2 0
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_3 0
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_4 1000
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_5 0
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_6 0
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_7 0
-scoreboard players set @e[type=armor_stand,tag=!has_parent] parent_matrix_8 1000
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_0 1000
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_1 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_2 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_3 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_4 1000
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_5 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_6 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_7 0
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_8 1000
 
 scoreboard players set #depth global 0
 function blockbuster:transform

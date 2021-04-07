@@ -1,3 +1,26 @@
+# pass data to selected stand
+scoreboard players set @e[type=armor_stand,tag=block] edit 0
+
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] temp 1
+execute as @e[type=armor_stand,tag=ray] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] edit = @s edit
+tag @e[type=armor_stand,tag=block,scores={temp=1}] add glow
+
+## relay to parent
+tag @e[type=armor_stand] remove parent_glow
+execute as @e[type=armor_stand,tag=block,tag=!hidden] if score @s self_uuid_0 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_0 if score @s self_uuid_1 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_1 if score @s self_uuid_2 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_2 if score @s self_uuid_3 = @e[type=armor_stand,tag=block,tag=!hidden,scores={temp=1},limit=1] parent_uuid_3 run tag @s add parent_glow
+
+## relay to player
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,tag=has_parent,distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=1,temp=1}] edit 2
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,tag=!has_parent,distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=2,temp=1}] edit 1
+
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,scores={play=1},distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=5,temp=1}] edit 6
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,scores={play=0},distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=6,temp=1}] edit 5
+
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,scores={keyframe_type=1},distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=10,temp=1}] edit 11
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,scores={keyframe_type=0},distance=..0.5,limit=1] run scoreboard players set @p[scores={edit=11,temp=1}] edit 10
+
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
 # add parent
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=4}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 tag @e[type=armor_stand,tag=block,scores={temp=1}] add awaiting_parent
@@ -26,7 +49,7 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 # remove parent
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=5}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
-execute as @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:unparent_position
+function blockbuster:unparent_position
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_x 0
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_y 0
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_z 0
@@ -49,7 +72,21 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run tag @s add hidden
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # delete
-execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=8}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run kill @s
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=8}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=block] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run scoreboard players set @s temp 2
+function blockbuster:unparent_on_delete
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_pos_x 0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_pos_y 0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_pos_z 0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_rot_x 0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_rot_y 0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_rot_z 0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_0
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_1
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_2
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_3
+kill @e[type=armor_stand,tag=block,scores={temp=1}]
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # move
 
@@ -282,6 +319,67 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 # update parent
 function blockbuster:pass_to_parent
 
+# new keyframe
+
+## position
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=29}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] at @s run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,Marker:1b,Tags:["new_keyframe"]}
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_0
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_1
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_x
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z
+scoreboard players set @e[type=armor_stand,tag=new_keyframe] keyframe_type 1
+scoreboard players set @e[type=armor_stand,tag=new_keyframe] transition_type 1
+tag @e[tag=new_keyframe] add keyframe
+tag @e[tag=new_keyframe] remove new_keyframe
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
+## rotation
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=30}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] at @s run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,Marker:1b,Tags:["new_keyframe"]}
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_0
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_1
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_y
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z
+scoreboard players set @e[type=armor_stand,tag=new_keyframe] keyframe_type 3
+scoreboard players set @e[type=armor_stand,tag=new_keyframe] transition_type 1
+tag @e[tag=new_keyframe] add keyframe
+tag @e[tag=new_keyframe] remove new_keyframe
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
+## position and rotation
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=31}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] at @s run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,Marker:1b,Tags:["new_keyframe"]}
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_0
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_1
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_x
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_y
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_offset_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_offset_z
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_x
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_y
+scoreboard players operation @e[type=armor_stand,tag=new_keyframe] initial_rot_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z
+scoreboard players set @e[type=armor_stand,tag=new_keyframe] keyframe_type 2
+scoreboard players set @e[type=armor_stand,tag=new_keyframe] transition_type 1
+tag @e[tag=new_keyframe] add keyframe
+tag @e[tag=new_keyframe] remove new_keyframe
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
+# test for keyframe at time
+execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+scoreboard players set @e[type=armor_stand,tag=block] keyframe_type 0
+execute as @e[type=armor_stand,tag=keyframe] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 if score @s time = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] time run scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] keyframe_type 1
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 
 # transform and timeline text
@@ -289,7 +387,7 @@ execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ as @e[type=a
 
 data merge storage blockbuster:main {signs:["","","","","",""]}
 data merge storage blockbuster:main {timeline:["","","","","","","","","","","","","","","","","","","",""]}
-data merge storage blockbuster:main {strings:["","",""]}
+data merge storage blockbuster:main {timeline_short:["","","","",""]}
 
 scoreboard players operation #x_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_offset_x
 execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run scoreboard players remove #x_pos global 500
@@ -325,7 +423,7 @@ scoreboard players operation #y_pos_dec_2 global %= #10 constants
 
 scoreboard players operation #z_pos global = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] initial_offset_z
 execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run scoreboard players remove #z_pos global 500
-execute if score #z_pos global matches 1.. run data modify storage blockbuster:main signs[2] set value "-"
+execute if score #z_pos global matches ..-1 run data modify storage blockbuster:main signs[2] set value "-"
 execute if score #z_pos global matches ..-1 run scoreboard players operation #z_pos global *= #-1 constants
 scoreboard players operation #z_pos_int global = #z_pos global
 scoreboard players operation #z_pos_int global /= #1000 constants
@@ -409,7 +507,7 @@ scoreboard players operation #progress global *= #100 constants
 scoreboard players operation #progress global /= @e[type=armor_stand,tag=block,scores={temp=1},limit=1] anim_length
 
 data modify storage blockbuster:strings position set value "[{\"text\":\"[\",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[0]\",\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_pos_int\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_pos_dec_0\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_pos_dec_1\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_pos_dec_2\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"text\":\", \",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[1]\",\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_pos_int\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"text\":\".\",\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_pos_dec_0\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_pos_dec_1\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_pos_dec_2\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"text\":\", \",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[2]\",\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_pos_int\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"text\":\".\",\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_pos_dec_0\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_pos_dec_1\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_pos_dec_2\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"text\":\"]\",\"color\":\"#202020\"}]"
-data modify storage blockbuster:strings rotation set value "[{\"text\":\"[\",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[0]\",\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_int\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_dec_0\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_dec_1\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_dec_2\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"text\":\", \",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[1]\",\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_int\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"text\":\".\",\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_dec_0\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_dec_1\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_dec_2\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"text\":\", \",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[2]\",\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_int\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"text\":\".\",\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_dec_0\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_dec_1\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_dec_2\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"text\":\"]\",\"color\":\"#202020\"}]"
+data modify storage blockbuster:strings rotation set value "[{\"text\":\"[\",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[3]\",\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_int\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"text\":\".\",\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_dec_0\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_dec_1\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"score\":{\"name\":\"#x_rot_dec_2\",\"objective\":\"global\"},\"color\":\"dark_red\"},{\"text\":\", \",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[4]\",\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_int\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"text\":\".\",\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_dec_0\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_dec_1\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"score\":{\"name\":\"#y_rot_dec_2\",\"objective\":\"global\"},\"color\":\"dark_green\"},{\"text\":\", \",\"color\":\"#202020\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"signs[5]\",\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_int\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"text\":\".\",\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_dec_0\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_dec_1\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"score\":{\"name\":\"#z_rot_dec_2\",\"objective\":\"global\"},\"color\":\"dark_blue\"},{\"text\":\"]\",\"color\":\"#202020\"}]"
 
 data modify storage blockbuster:main timeline[0] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
 data modify storage blockbuster:main timeline[1] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
@@ -453,29 +551,43 @@ execute if score #progress global matches 85..89 run data modify storage blockbu
 execute if score #progress global matches 90..94 run data modify storage blockbuster:main timeline[18] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
 execute if score #progress global matches 95..100 run data modify storage blockbuster:main timeline[19] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
 
+data modify storage blockbuster:main timeline_short[0] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
+data modify storage blockbuster:main timeline_short[1] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
+data modify storage blockbuster:main timeline_short[2] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
+data modify storage blockbuster:main timeline_short[3] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
+data modify storage blockbuster:main timeline_short[4] set value "{\"text\":\"-\",\"color\":\"light_purple\"}"
+
+execute if score #progress global matches ..19 run data modify storage blockbuster:main timeline_short[0] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
+execute if score #progress global matches 20..39 run data modify storage blockbuster:main timeline_short[1] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
+execute if score #progress global matches 40..59 run data modify storage blockbuster:main timeline_short[2] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
+execute if score #progress global matches 60..79 run data modify storage blockbuster:main timeline_short[3] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
+execute if score #progress global matches 80.. run data modify storage blockbuster:main timeline_short[4] set value "[{\"text\":\"<\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#time_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\">\",\"color\":\"light_purple\"}]"
+
 data modify storage blockbuster:strings timeline set value "[{\"text\":\"0.00 |\",\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[0]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[1]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[2]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[3]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[4]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[5]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[6]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[7]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[8]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[9]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[10]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[11]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[12]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[13]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[14]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[15]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[16]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[17]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[18]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline[19]\",\"interpret\":true,\"color\":\"light_purple\"},{\"text\":\"| \",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#anim_length_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#anim_length_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#anim_length_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"}]"
+
+data modify storage blockbuster:strings timeline_short set value "[{\"text\":\"0.00 |\",\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline_short[0]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline_short[1]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline_short[2]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline_short[3]\",\"interpret\":true,\"color\":\"light_purple\"},{\"storage\":\"blockbuster:main\",\"nbt\":\"timeline_short[4]\",\"interpret\":true,\"color\":\"light_purple\"},{\"text\":\"| \",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#anim_length_int\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"text\":\".\",\"color\":\"light_purple\"},{\"score\":{\"name\":\"#anim_length_dec_0\",\"objective\":\"global\"},\"color\":\"light_purple\"},{\"score\":{\"name\":\"#anim_length_dec_1\",\"objective\":\"global\"},\"color\":\"light_purple\"}]"
 
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=2}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=1..2}] actionbar [{"text":"Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=2}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=1..2}] actionbar [{"text":"Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=2}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=5..6}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=2}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=5..6}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=2}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=5..6}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=2}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=5..6}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
 
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=10..11}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=4}] actionbar [{"text":"Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=10..11}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=4}] actionbar [{"text":"Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=10..11}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=9}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=10..11}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=9}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=10..11}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=9}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=10..11}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=9}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"rotation","interpret":true}]
 
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=12}] actionbar [{"text":"Position: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=12}] actionbar [{"text":"Relative Position: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=13}] actionbar [{"text":"Position: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=13}] actionbar [{"text":"Relative Position: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=15}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=12..17}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=15}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Pos: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
 
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=13}] actionbar [{"text":"Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=13}] actionbar [{"text":"Relative Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=15}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=15}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"text":"Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=14}] actionbar [{"text":"Relative Rotation: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=16}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=39..44}] if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={temp=1}] run title @p[scores={temp=1,edit=16}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"text":" | Rel Rot: ","color":"#202020"},{"storage":"blockbuster:strings","nbt":"position","interpret":true}]
 
-execute if entity @e[type=armor_stand,tag=ray,scores={edit=20}] if entity @e[type=armor_stand,tag=block,scores={temp=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
+execute if entity @e[type=armor_stand,tag=ray,scores={edit=18..20}] if entity @e[type=armor_stand,tag=block,scores={temp=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=22..28}] if entity @e[type=armor_stand,tag=block,scores={temp=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
 execute if entity @e[type=armor_stand,tag=ray,scores={edit=45..48}] if entity @e[type=armor_stand,tag=block,scores={temp=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
 
