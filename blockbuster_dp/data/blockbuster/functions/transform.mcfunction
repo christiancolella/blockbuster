@@ -1,9 +1,9 @@
 execute as @e[type=armor_stand,tag=block] if score @s depth = #depth global run scoreboard players set @s global 1
 
 # compute transformations
-function blockbuster:compute_trig
-function blockbuster:compute_matrix
-function blockbuster:retrieve_from_parent
+function blockbuster:transform/compute_trig
+function blockbuster:transform/compute_matrix
+function blockbuster:parent/retrieve
 
 # compute render corrections
 

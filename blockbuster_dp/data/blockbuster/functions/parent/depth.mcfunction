@@ -9,7 +9,7 @@ scoreboard players set @e[type=armor_stand,tag=block,scores={temp=3}] temp 5
 
 execute unless entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players add #depth global 1
 execute unless entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @e[type=armor_stand,tag=block,scores={temp=5}] temp 1
-execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:depth
+execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:parent/depth
 
 scoreboard players operation #maxdepth global = #depth global
 scoreboard players remove #maxdepth global 1

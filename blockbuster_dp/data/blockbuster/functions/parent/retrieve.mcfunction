@@ -47,5 +47,5 @@ scoreboard players operation @e[type=armor_stand,scores={temp=1}] play = @e[type
 scoreboard players set @e[type=armor_stand,scores={temp=1}] temp 3
 scoreboard players set @e[type=armor_stand,scores={temp=2}] temp 0
 
-execute if entity @e[type=armor_stand,tag=has_parent,scores={global=1,temp=0}] run function blockbuster:retrieve_from_parent
+execute if entity @e[type=armor_stand,tag=has_parent,scores={global=1,temp=0}] run function blockbuster:parent/retrieve
 scoreboard players set @e[type=armor_stand,tag=has_parent] temp 0

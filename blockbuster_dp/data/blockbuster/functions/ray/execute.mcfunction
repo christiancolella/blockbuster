@@ -49,7 +49,7 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 # remove parent
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=5}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
-function blockbuster:unparent_position
+function blockbuster:parent/on_remove
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_x 0
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_y 0
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_z 0
@@ -74,7 +74,7 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 # delete
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=8}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=block] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run scoreboard players set @s temp 2
-function blockbuster:unparent_on_delete
+function blockbuster:parent/on_delete
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_pos_x 0
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_pos_y 0
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s parent_pos_z 0
@@ -317,7 +317,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # update parent
-function blockbuster:pass_to_parent
+function blockbuster:parent/send
 
 # new keyframe
 

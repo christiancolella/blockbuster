@@ -25,5 +25,5 @@ function blockbuster:math/sin
 scoreboard players operation @e[type=armor_stand,scores={temp=1}] self_sin_z = #output_sin global
 
 scoreboard players set @e[type=armor_stand,scores={temp=1}] temp 2
-execute if entity @e[type=armor_stand,tag=is_parent,scores={temp=0}] run function blockbuster:compute_trig
+execute if entity @e[type=armor_stand,tag=is_parent,scores={temp=0}] run function blockbuster:transform/compute_trig
 scoreboard players set @e[type=armor_stand,tag=is_parent] temp 0

@@ -45,13 +45,13 @@ execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s la
 # check relations and add tags
 tag @e[type=armor_stand,tag=block] remove is_parent
 tag @e[type=armor_stand,tag=block] remove has_parent
-function blockbuster:test_for_parent
+function blockbuster:parent/relation
 
 scoreboard players set @e[type=armor_stand,tag=block] depth -1
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] depth 0
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] temp 1
-function blockbuster:depth
+function blockbuster:parent/depth
 
 # compute and apply parented transformations
 

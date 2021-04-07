@@ -101,8 +101,28 @@ scoreboard objectives add correction_scale dummy
 scoreboard objectives add anim_length dummy
 scoreboard objectives add time dummy
 scoreboard objectives add play dummy
+
 scoreboard objectives add keyframe_type dummy
 scoreboard objectives add transition_type dummy
+
+scoreboard objectives add last_time dummy
+scoreboard objectives add delta_time dummy
+
+scoreboard objectives add from_pos_x dummy
+scoreboard objectives add from_pos_y dummy
+scoreboard objectives add from_pos_z dummy
+
+scoreboard objectives add to_pos_x dummy
+scoreboard objectives add to_pos_y dummy
+scoreboard objectives add to_pos_z dummy
+
+scoreboard objectives add from_rot_x dummy
+scoreboard objectives add from_rot_y dummy
+scoreboard objectives add from_rot_z dummy
+
+scoreboard objectives add to_rot_x dummy
+scoreboard objectives add to_rot_y dummy
+scoreboard objectives add to_rot_z dummy
 
 # for edit mode
 scoreboard objectives add edit dummy

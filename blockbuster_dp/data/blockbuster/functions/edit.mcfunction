@@ -26,10 +26,6 @@ execute as @e[type=armor_stand,tag=block] store success score @s has_hand_item r
 execute as @e[type=armor_stand,tag=block] if score @s has_hand_item matches 1 run data modify entity @s ArmorItems[3] set from entity @s HandItems[0]
 execute as @e[type=armor_stand,tag=block] run data merge entity @s {HandItems:[{},{}]}
 
-# teleport keyframes
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
-function blockbuster:teleport_keyframes
-
 # visual stuff
 tag @e[type=armor_stand,tag=block] remove glow
 function blockbuster:ray/setup
