@@ -10,6 +10,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboar
 execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players operation @s from_pos_y = @s to_pos_y
 execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players operation @s from_pos_z = @s to_pos_z
 execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players set @s from_pos_time 0
+execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players set @s pos_trans_type 1
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 
 # rot
@@ -21,6 +22,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboar
 execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players operation @s from_rot_y = @s to_rot_y
 execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players operation @s from_rot_z = @s to_rot_z
 execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players set @s from_rot_time 0
+execute as @e[type=armor_stand,tag=block,scores={temp=1,global=1}] run scoreboard players set @s rot_trans_type 1
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 4

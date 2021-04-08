@@ -53,6 +53,12 @@ scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] temp 1
 function blockbuster:parent/depth
 
+# edit mode
+function blockbuster:edit
+
+# animate
+function blockbuster:animate
+
 # compute and apply parented transformations
 
 ## set identity matrix if no parent
@@ -76,9 +82,3 @@ execute as @e[type=armor_stand,tag=block] store result entity @s Pos[2] double 0
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[0] float 0.001 run scoreboard players get @s self_rot_x
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
-
-# edit mode
-function blockbuster:edit
-
-# animate
-function blockbuster:animate

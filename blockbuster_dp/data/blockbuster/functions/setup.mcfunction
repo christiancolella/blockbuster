@@ -30,6 +30,8 @@ scoreboard objectives add parent_rot_x dummy
 scoreboard objectives add parent_rot_y dummy
 scoreboard objectives add parent_rot_z dummy
 
+scoreboard objectives add depth dummy
+
 scoreboard objectives add self_cos_x dummy
 scoreboard objectives add self_cos_y dummy
 scoreboard objectives add self_cos_z dummy
@@ -105,8 +107,8 @@ scoreboard objectives add play dummy
 scoreboard objectives add keyframe_type dummy
 scoreboard objectives add transition_type dummy
 
-scoreboard objectives add last_time dummy
-scoreboard objectives add delta_time dummy
+scoreboard objectives add pos_trans_type dummy
+scoreboard objectives add rot_trans_type dummy
 
 scoreboard objectives add from_pos_x dummy
 scoreboard objectives add from_pos_y dummy
@@ -128,12 +130,11 @@ scoreboard objectives add to_rot_y dummy
 scoreboard objectives add to_rot_z dummy
 scoreboard objectives add to_rot_time dummy
 
-scoreboard objectives add pos_time_fraction dummy
-scoreboard objectives add rot_time_fraction dummy
+scoreboard objectives add last_time dummy
+scoreboard objectives add delta_time dummy
 
 # for edit mode
 scoreboard objectives add edit dummy
-scoreboard objectives add depth dummy
 
 team add black
 team add dark_blue
@@ -180,6 +181,7 @@ scoreboard players set #13 constants 13
 scoreboard players set #20 constants 20
 scoreboard players set #100 constants 100
 scoreboard players set #110 constants 110
+scoreboard players set #180 constants 180
 scoreboard players set #1000 constants 1000
 scoreboard players set #15820 constants 15820
 scoreboard players set #90000 constants 90000

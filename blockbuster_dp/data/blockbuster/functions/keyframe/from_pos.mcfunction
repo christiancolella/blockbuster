@@ -3,6 +3,7 @@ execute if entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] run scoreboa
 execute if entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] from_pos_y = @e[type=armor_stand,tag=keyframe,scores={temp=3}] initial_pos_y
 execute if entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] from_pos_z = @e[type=armor_stand,tag=keyframe,scores={temp=3}] initial_pos_z
 execute if entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] from_pos_time = #temp global
+execute if entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] pos_trans_type = @e[type=armor_stand,tag=keyframe,scores={temp=3}] transition_type
 scoreboard players remove #temp global 1
 execute unless entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] if score #temp global matches -1 run scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] global 1
 execute unless entity @e[type=armor_stand,tag=keyframe,scores={temp=3}] unless score #temp global matches -1 run function blockbuster:keyframe/from_pos
