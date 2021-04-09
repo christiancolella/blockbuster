@@ -23,6 +23,8 @@ function blockbuster:keyframe/teleport
 
 # search for and retrieve data from keyframes
 function blockbuster:keyframe/search
+execute as @e[type=armor_stand,tag=block] if score @s from_pos_time = @s anim_length run scoreboard players add @s to_pos_time 1
+execute as @e[type=armor_stand,tag=block] if score @s from_rot_time = @s anim_length run scoreboard players add @s to_rot_time 1
 
 # calculate interpolations
 function blockbuster:keyframe/interpolate

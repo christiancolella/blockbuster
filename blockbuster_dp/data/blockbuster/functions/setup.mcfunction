@@ -81,6 +81,18 @@ scoreboard objectives add initial_rot_x dummy
 scoreboard objectives add initial_rot_y dummy
 scoreboard objectives add initial_rot_z dummy
 
+scoreboard objectives add last_pos_x dummy
+scoreboard objectives add last_pos_y dummy
+scoreboard objectives add last_pos_z dummy
+
+scoreboard objectives add self_vel_x dummy
+scoreboard objectives add self_vel_y dummy
+scoreboard objectives add self_vel_z dummy
+
+scoreboard objectives add parent_vel_x dummy
+scoreboard objectives add parent_vel_y dummy
+scoreboard objectives add parent_vel_z dummy
+
 scoreboard objectives add last_rot_x dummy
 scoreboard objectives add last_rot_y dummy
 scoreboard objectives add last_rot_z dummy
@@ -135,6 +147,7 @@ scoreboard objectives add delta_time dummy
 
 # for edit mode
 scoreboard objectives add edit dummy
+scoreboard objectives add message dummy
 
 team add black
 team add dark_blue

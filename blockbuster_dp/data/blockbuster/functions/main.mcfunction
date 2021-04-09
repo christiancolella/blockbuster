@@ -17,6 +17,20 @@ execute as @e[type=armor_stand,tag=block] store result score @s self_rot_x run d
 execute as @e[type=armor_stand,tag=block] store result score @s self_rot_y run data get entity @s Pose.Head[1] 1000
 execute as @e[type=armor_stand,tag=block] store result score @s self_rot_z run data get entity @s Pose.Head[2] 1000
 
+# velocity
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x = @s initial_pos_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x -= @s last_pos_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_x = @s temp
+
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y = @s initial_pos_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y -= @s last_pos_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_y = @s temp
+
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z = @s initial_pos_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z = @s temp
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z -= @s last_pos_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_z = @s temp
+
 # angular velocity
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp = @s initial_rot_x
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp %= #360000 constants
