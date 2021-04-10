@@ -102,7 +102,7 @@ execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.3 netherite_b
 execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.4 air
 execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.5 air
 execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.6 air
-execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.7 air
+execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.7 netherite_boots{display:{Name:"{\"text\":\"Stop All Animations\",\"color\":\"red\",\"italic\":false}"},CustomModelData:53}
 execute as @a[scores={edit=5..6}] run replaceitem entity @s hotbar.8 netherite_boots{display:{Name:"{\"text\":\"Back\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}
 
 ## timeline

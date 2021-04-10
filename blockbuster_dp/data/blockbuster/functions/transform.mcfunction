@@ -1,8 +1,7 @@
 execute as @e[type=armor_stand,tag=block] if score @s depth = #depth global run scoreboard players set @s global 1
 
 # compute transformations
-function blockbuster:transform/compute_trig
-function blockbuster:transform/compute_matrix
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 function blockbuster:parent/retrieve
 
 # compute render corrections
@@ -57,111 +56,111 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp < @
 ## x
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players set @s correction_x 0
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x -= @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x *= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_x /= @s correction_scale
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x *= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x /= @s correction_scale
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_x += @s initial_pos_x
 
 
 ## y
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players set @s correction_y 0
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y -= @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y += @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y += @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y -= @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y *= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_y /= @s correction_scale
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y *= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y /= @s correction_scale
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_y += @s initial_pos_y
 
 ## z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players set @s correction_z 0
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z += @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z += @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_cos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_y
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s initial_pos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= @s parent_sin_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z -= @s temp
 
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z *= #1000 constants
-execute as @e[type=armor_stand,tag=has_parent,scores={global=1}] run scoreboard players operation @s correction_z /= @s correction_scale
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z *= #1000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z /= @s correction_scale
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_z += @s initial_pos_z
 
 # apply transformations
@@ -237,7 +236,13 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_z = @s parent_rot_z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_z += @s initial_rot_z
 
+# compute matrix
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+function blockbuster:transform/compute_trig
+function blockbuster:transform/compute_matrix
+
 # repeat at next layer
-scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players add #depth global 1
+scoreboard players set @e[type=armor_stand,tag=block] global 0
 execute if score #depth global <= #maxdepth global run function blockbuster:transform
+scoreboard players set @e[type=armor_stand,tag=block] temp 0

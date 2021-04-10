@@ -7,9 +7,9 @@ scoreboard players operation #output_value global -= #to_value global
 scoreboard players operation #output_value global /= #2 constants
 scoreboard players operation #input_cos global = #time global
 scoreboard players operation #input_cos global -= #from_time global
+scoreboard players operation #input_cos global *= #1000 constants
 scoreboard players operation #temp global = #to_time global
 scoreboard players operation #temp global -= #from_time global
-scoreboard players operation #temp global /= #1000 constants
 scoreboard players operation #input_cos global /= #temp global
 scoreboard players operation #input_cos global *= #180 constants
 function blockbuster:math/cos

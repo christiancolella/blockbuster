@@ -36,12 +36,10 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] pare
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_1
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x -= @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y -= @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] self_pos_z
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z -= @e[type=armor_stand,tag=block,scores={temp=1}] self_pos_z
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x *= #-1 constants
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
 tag @e[type=armor_stand,tag=block,scores={temp=2}] remove awaiting_parent
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
@@ -268,12 +266,14 @@ execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=23}] at @s posit
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation #temp global = @s anim_length
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation #temp global -= @s time
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score #temp global matches 5.. run scoreboard players add @s time 5
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score #temp global matches ..4 run scoreboard players operation @s time = @s anim_length
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## move -0.25 seconds
 execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=24}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score @s time matches 5.. run scoreboard players remove @s time 5
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] if score #temp global matches ..4 run scoreboard players set @s time 0
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 

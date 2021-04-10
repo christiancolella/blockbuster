@@ -8,6 +8,9 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run data merge entity 
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run tag @s remove hidden
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
+## stop all
+execute as @e[type=armor_stand,tag=ray,tag=execute,scores={edit=53}] run scoreboard players set @e[type=armor_stand,tag=block] play 0
+
 # kill ray
 execute as @e[type=armor_stand,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run kill @s
 execute as @e[type=armor_stand,tag=ray] if score #steps global matches 128.. run kill @s

@@ -1,6 +1,4 @@
 # set up scores
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
-
 execute as @e[type=armor_stand,tag=block] store result score @s self_uuid_0 run data get entity @s UUID[0]
 execute as @e[type=armor_stand,tag=block] store result score @s self_uuid_1 run data get entity @s UUID[1]
 execute as @e[type=armor_stand,tag=block] store result score @s self_uuid_2 run data get entity @s UUID[2]
@@ -20,16 +18,15 @@ execute as @e[type=armor_stand,tag=block] store result score @s self_rot_z run d
 # velocity
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x = @s initial_pos_x
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x -= @s last_pos_x
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_x = @s temp
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_x = @s initial_pos_x
 
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y = @s initial_pos_y
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y -= @s last_pos_y
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_y = @s temp
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_y = @s initial_pos_y
 
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z = @s initial_pos_z
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z = @s temp
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z -= @s last_pos_z
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_z = @s temp
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_z = @s initial_pos_z
 
 # angular velocity
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp = @s initial_rot_x
@@ -59,18 +56,18 @@ execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s la
 # check relations and add tags
 tag @e[type=armor_stand,tag=block] remove is_parent
 tag @e[type=armor_stand,tag=block] remove has_parent
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 function blockbuster:parent/relation
 
-scoreboard players set @e[type=armor_stand,tag=block] depth -1
-scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] depth 0
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] temp 1
+scoreboard players set @e[type=armor_stand,tag=block] depth -1
+scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] depth 0
 function blockbuster:parent/depth
 
-# edit mode
-function blockbuster:edit
-
 # animate
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @e[type=armor_stand,tag=block] global 0
 function blockbuster:animate
 
 # compute and apply parented transformations
@@ -86,13 +83,32 @@ scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_mat
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_7 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] parent_matrix_8 1000
 
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set #depth global 0
 function blockbuster:transform
 
 ## merge transformations
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp = @s self_vel_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #180 constants
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp /= #100 constants
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_pos_x += @s temp
 execute as @e[type=armor_stand,tag=block] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp = @s self_vel_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #180 constants
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp /= #100 constants
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_pos_y += @s temp
 execute as @e[type=armor_stand,tag=block] store result entity @s Pos[1] double 0.001 run scoreboard players get @s self_pos_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp = @s self_vel_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #180 constants
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp /= #100 constants
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_pos_z += @s temp
 execute as @e[type=armor_stand,tag=block] store result entity @s Pos[2] double 0.001 run scoreboard players get @s self_pos_z
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[0] float 0.001 run scoreboard players get @s self_rot_x
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
+
+# edit mode
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @e[type=armor_stand,tag=block] global 0
+function blockbuster:edit
