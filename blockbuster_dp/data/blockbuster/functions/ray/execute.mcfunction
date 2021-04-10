@@ -40,6 +40,9 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] init
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x *= #-1 constants
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_x = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
 tag @e[type=armor_stand,tag=block,scores={temp=2}] remove awaiting_parent
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
@@ -57,6 +60,9 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players reset @s parent_uuid_1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players reset @s parent_uuid_2
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players reset @s parent_uuid_3
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_pos_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_pos_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
