@@ -6,7 +6,7 @@ function blockbuster:parent/retrieve
 
 # compute render corrections
 
-## offset scale = 15.82 - 0.11 * omega
+## offset scale = 15.82 + 0.8 * omega
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_x
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp matches ..-1 run scoreboard players operation @s temp *= #-1 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale = @s temp
@@ -16,17 +16,16 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp > @
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp matches ..-1 run scoreboard players operation @s temp *= #-1 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp > @s correction_scale run scoreboard players operation @s correction_scale = @s temp
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale *= #110 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale *= #800 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale /= #1000 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale -= #15820 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale *= #-1 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale += #15820 constants
 
-## matrix scale = 1 - 0.013 * omega
+## matrix scale = 1 - 0.002 * omega
 
 ### x
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_x
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp matches ..-1 run scoreboard players operation @s temp *= #-1 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #13 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #2 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp -= #1000 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #-1 constants
@@ -36,7 +35,7 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 ### y
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_y
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp matches ..-1 run scoreboard players operation @s temp *= #-1 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #13 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #2 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp -= #1000 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #-1 constants
@@ -46,7 +45,7 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp < @
 ### z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s parent_omega_z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp matches ..-1 run scoreboard players operation @s temp *= #-1 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #13 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #2 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp /= #1000 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp -= #1000 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp *= #-1 constants

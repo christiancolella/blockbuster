@@ -72,6 +72,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run data modify entity
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run data modify entity @s ArmorItems[3] set value {id:"minecraft:barrier",Count:1b}
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run data merge entity @s {Marker:1b}
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run tag @s add hidden
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] run kill @e[type=armor_stand,tag=ray]
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # delete
@@ -88,6 +89,10 @@ execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_1
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_2
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_3
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_x = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] run kill @e[type=armor_stand,tag=ray]
 kill @e[type=armor_stand,tag=block,scores={temp=1}]
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 

@@ -190,11 +190,10 @@ scoreboard players set #-1 constants -1
 scoreboard players set #2 constants 2
 scoreboard players set #5 constants 5
 scoreboard players set #10 constants 10
-scoreboard players set #13 constants 13
 scoreboard players set #20 constants 20
 scoreboard players set #100 constants 100
-scoreboard players set #110 constants 110
 scoreboard players set #180 constants 180
+scoreboard players set #800 constants 800
 scoreboard players set #1000 constants 1000
 scoreboard players set #15820 constants 15820
 scoreboard players set #90000 constants 90000
