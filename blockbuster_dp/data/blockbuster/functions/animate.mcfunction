@@ -44,3 +44,6 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @s initial_rot_y = @s from_rot_y
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @s initial_rot_z = @s from_rot_z
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
+# delete keyframe if block is gone
+function blockbuster:keyframe/delete

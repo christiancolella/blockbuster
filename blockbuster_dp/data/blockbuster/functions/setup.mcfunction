@@ -146,8 +146,8 @@ scoreboard objectives add last_time dummy
 scoreboard objectives add delta_time dummy
 
 # for edit mode
+scoreboard objectives add click minecraft.used:minecraft.warped_fungus_on_a_stick
 scoreboard objectives add edit dummy
-scoreboard objectives add message dummy
 
 team add black
 team add dark_blue
@@ -192,6 +192,7 @@ scoreboard players set #5 constants 5
 scoreboard players set #10 constants 10
 scoreboard players set #20 constants 20
 scoreboard players set #100 constants 100
+scoreboard players set #160 constants 160
 scoreboard players set #180 constants 180
 scoreboard players set #800 constants 800
 scoreboard players set #1000 constants 1000
