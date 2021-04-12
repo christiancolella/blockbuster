@@ -46,16 +46,16 @@ execute as @e[type=armor_stand,tag=block] store result score @s self_rot_z run d
 
 # velocity
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x = @s initial_pos_x
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x -= @s last_pos_x
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_x = @s initial_pos_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_x -= @s last_init_pos_x
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_init_pos_x = @s initial_pos_x
 
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y = @s initial_pos_y
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y -= @s last_pos_y
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_y = @s initial_pos_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_y -= @s last_init_pos_y
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_init_pos_y = @s initial_pos_y
 
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z = @s initial_pos_z
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z -= @s last_pos_z
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_pos_z = @s initial_pos_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_vel_z -= @s last_init_pos_z
+execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_init_pos_z = @s initial_pos_z
 
 # angular velocity
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp = @s initial_rot_x
@@ -82,10 +82,20 @@ execute as @e[type=armor_stand,tag=block] if score @s self_omega_z matches 18000
 execute as @e[type=armor_stand,tag=block] if score @s self_omega_z matches ..-180000 run scoreboard players operation @s self_omega_z += #360000 constants
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s last_rot_z = @s temp
 
+# collision box
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+function blockbuster:misc/collision_box
+execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard players operation @s last_self_pos_x = @s self_pos_x
+execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard players operation @s last_self_pos_y = @s self_pos_y
+execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard players operation @s last_self_pos_y += #726 constants
+execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard players operation @s last_self_pos_z = @s self_pos_z
+
 # edit mode
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 function blockbuster:edit
+
+execute at @e[type=armor_stand,tag=block,tag=has_collision] positioned ~ ~0.726 ~ if block ~ ~ ~ air run setblock ~ ~ ~ barrier
 
 # check relations and add tags
 tag @e[type=armor_stand,tag=block] remove is_parent

@@ -27,15 +27,6 @@ execute as @a[scores={edit=1,global=2,temp=1}] run scoreboard players set @s edi
 execute as @a[scores={edit=1,global=3,temp=1}] run scoreboard players set @s edit 5
 execute as @a[scores={edit=1,global=54,temp=1}] run scoreboard players set @s edit 17
 
-## copy
-execute as @a[scores={edit=2,global=56,temp=1}] run scoreboard players set @s edit 17
-execute as @a[scores={edit=2,global=1,temp=1}] run scoreboard players set @s edit 17
-
-## parent
-execute as @a[scores={edit=3,global=9,temp=1}] run scoreboard players set @s edit 17
-execute as @a[scores={edit=3,global=1,temp=1}] as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @p[scores={temp=1}] parent_uuid_0 if score @s self_uuid_1 = @p[scores={temp=1}] parent_uuid_1 if score @s self_uuid_2 = @p[scores={temp=1}] parent_uuid_2 if score @s self_uuid_3 = @p[scores={temp=1}] parent_uuid_3 run tag @s remove awaiting_parent
-execute as @a[scores={edit=3,global=1,temp=1}] run scoreboard players set @s edit 17
-
 ## transform
 execute as @a[scores={edit=4,global=10,temp=1}] run scoreboard players set @s edit 13
 execute as @a[scores={edit=4,global=11,temp=1}] run scoreboard players set @s edit 14
@@ -83,6 +74,15 @@ execute as @a[scores={edit=17..18,global=4,temp=1}] run scoreboard players set @
 execute as @a[scores={edit=17..20,global=55,temp=1}] run scoreboard players set @s edit 2
 execute as @a[scores={edit=17..20,global=1,temp=1}] run scoreboard players set @s edit 1
 
+## copy
+execute as @a[scores={edit=2,global=56,temp=1}] run scoreboard players set @s edit 17
+execute as @a[scores={edit=2,global=1,temp=1}] run scoreboard players set @s edit 17
+execute as @a[scores={edit=2,global=1,temp=1}] run scoreboard players set @s global 0
+
+## parent
+execute as @a[scores={edit=3,global=9,temp=1}] run scoreboard players set @s edit 17
+execute as @a[scores={edit=3,global=1,temp=1}] as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @p[scores={temp=1}] parent_uuid_0 if score @s self_uuid_1 = @p[scores={temp=1}] parent_uuid_1 if score @s self_uuid_2 = @p[scores={temp=1}] parent_uuid_2 if score @s self_uuid_3 = @p[scores={temp=1}] parent_uuid_3 run tag @s remove awaiting_parent
+execute as @a[scores={edit=3,global=1,temp=1}] run scoreboard players set @s edit 17
 
 # send data to ray
 execute as @a[scores={temp=1},nbt={SelectedItem:{id:"minecraft:warped_fungus_on_a_stick"}}] store result score @e[type=area_effect_cloud,tag=ray] edit run data get entity @s SelectedItem.tag.CustomModelData

@@ -81,9 +81,13 @@ scoreboard objectives add initial_rot_x dummy
 scoreboard objectives add initial_rot_y dummy
 scoreboard objectives add initial_rot_z dummy
 
-scoreboard objectives add last_pos_x dummy
-scoreboard objectives add last_pos_y dummy
-scoreboard objectives add last_pos_z dummy
+scoreboard objectives add last_self_pos_x dummy
+scoreboard objectives add last_self_pos_y dummy
+scoreboard objectives add last_self_pos_z dummy
+
+scoreboard objectives add last_init_pos_x dummy
+scoreboard objectives add last_init_pos_y dummy
+scoreboard objectives add last_init_pos_z dummy
 
 scoreboard objectives add self_vel_x dummy
 scoreboard objectives add self_vel_y dummy
@@ -187,10 +191,10 @@ scoreboard players set #2 constants 2
 scoreboard players set #5 constants 5
 scoreboard players set #10 constants 10
 scoreboard players set #20 constants 20
-scoreboard players set #30 constants 30
 scoreboard players set #100 constants 100
 scoreboard players set #160 constants 160
 scoreboard players set #180 constants 180
+scoreboard players set #726 constants 726
 scoreboard players set #800 constants 800
 scoreboard players set #1000 constants 1000
 scoreboard players set #15820 constants 15820

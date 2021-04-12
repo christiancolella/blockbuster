@@ -38,6 +38,7 @@ scoreboard players operation @p[scores={temp=1}] parent_uuid_1 = @e[type=armor_s
 scoreboard players operation @p[scores={temp=1}] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
 scoreboard players operation @p[scores={temp=1}] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @e[type=armor_stand,tag=block] global 0
 
 # select parent
 execute as @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=9}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
@@ -46,18 +47,20 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] pare
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_1
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_2
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1}] self_uuid_3
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x *= #-1 constants
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z -= @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_x = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
+execute as @e[type=area_effect_cloud,tag=keyframe,scores={keyframe_type=1..2}] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=2},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=2},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=2},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=2},limit=1] self_uuid_3 run scoreboard players set @s temp 1
+execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players set @s global 1
+function blockbuster:parent/on_add
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_x = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
 tag @e[type=armor_stand,tag=block,scores={temp=2}] remove awaiting_parent
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
+scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # remove parent
 execute as @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=5}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute as @e[type=area_effect_cloud,tag=keyframe,scores={keyframe_type=1..2}] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s global 1
 function blockbuster:parent/on_remove
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @s parent_pos_x 0
@@ -70,9 +73,10 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players reset @s parent_uuid_1
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players reset @s parent_uuid_2
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players reset @s parent_uuid_3
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_pos_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_pos_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_init_pos_x = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_init_pos_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] last_init_pos_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_z
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
@@ -99,9 +103,9 @@ execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_1
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_2
 execute as @e[type=armor_stand,tag=block,scores={temp=2}] run scoreboard players reset @s parent_uuid_3
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_x = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_x = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
+scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
 execute as @e[type=armor_stand,tag=block,scores={temp=1}] run kill @e[type=area_effect_cloud,tag=ray]
 kill @e[type=armor_stand,tag=block,scores={temp=1}]
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
