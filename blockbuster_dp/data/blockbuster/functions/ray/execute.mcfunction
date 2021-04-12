@@ -1,7 +1,48 @@
+# hitbox
+execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] temp 1
+
+## summon new hitbox stands
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~0.25 ~0.226 ~0.25 {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~0.25 ~0.226 ~ {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~0.25 ~0.226 ~-0.25 {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~ ~0.226 ~0.25 {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~ ~0.226 ~ {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~ ~0.226 ~-0.25 {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~-0.25 ~0.226 ~0.25 {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~-0.25 ~0.226 ~ {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+execute at @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] run summon armor_stand ~-0.25 ~0.226 ~-0.25 {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,DisabledSlots:4079166,Tags:["new_hitbox"]}
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] parent_uuid_0 = @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_uuid_0
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] parent_uuid_1 = @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_uuid_1
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] parent_uuid_2 = @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_uuid_2
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] parent_uuid_3 = @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_uuid_3
+execute as @e[type=armor_stand,tag=new_hitbox] store result score @s initial_pos_x run data get entity @s Pos[0] 1000
+execute as @e[type=armor_stand,tag=new_hitbox] store result score @s initial_pos_y run data get entity @s Pos[1] 1000
+execute as @e[type=armor_stand,tag=new_hitbox] store result score @s initial_pos_z run data get entity @s Pos[2] 1000
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] initial_pos_x -= @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_pos_x
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] initial_pos_y -= @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_pos_y
+scoreboard players operation @e[type=armor_stand,tag=new_hitbox] initial_pos_z -= @e[type=armor_stand,tag=block,tag=!last_selected,tag=selected,scores={temp=1}] self_pos_z
+tag @e[type=armor_stand,tag=new_hitbox] add hitbox
+tag @e[type=armor_stand,tag=new_hitbox] remove new_hitbox
+
+## teleport existing hitbox stands
+execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1},limit=1] self_uuid_3 run scoreboard players set @s temp 1
+scoreboard players operation @e[type=armor_stand,tag=hitbox,scores={temp=1}] self_pos_x = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1}] self_pos_x
+scoreboard players operation @e[type=armor_stand,tag=hitbox,scores={temp=1}] self_pos_y = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1}] self_pos_y
+scoreboard players operation @e[type=armor_stand,tag=hitbox,scores={temp=1}] self_pos_z = @e[type=armor_stand,tag=block,tag=last_selected,tag=selected,scores={temp=1}] self_pos_z
+execute as @e[type=armor_stand,tag=hitbox,scores={temp=1}] run scoreboard players operation @s self_pos_x += @s initial_pos_x
+execute as @e[type=armor_stand,tag=hitbox,scores={temp=1}] run scoreboard players operation @s self_pos_y += @s initial_pos_y
+execute as @e[type=armor_stand,tag=hitbox,scores={temp=1}] run scoreboard players operation @s self_pos_z += @s initial_pos_z
+execute as @e[type=armor_stand,tag=hitbox,scores={temp=1}] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
+execute as @e[type=armor_stand,tag=hitbox,scores={temp=1}] store result entity @s Pos[1] double 0.001 run scoreboard players get @s self_pos_y
+execute as @e[type=armor_stand,tag=hitbox,scores={temp=1}] store result entity @s Pos[2] double 0.001 run scoreboard players get @s self_pos_z
+scoreboard players set @e[type=armor_stand,tag=hitbox] temp 0
+
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
 # pass data to selected stand
 scoreboard players set @e[type=armor_stand,tag=block] edit 0
 
-execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] temp 1
+execute if entity @p[scores={edit=1..,temp=1}] as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] temp 1
 execute as @e[type=area_effect_cloud,tag=ray] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] edit = @s edit
 tag @e[type=armor_stand,tag=block,scores={temp=1}] add glow
 

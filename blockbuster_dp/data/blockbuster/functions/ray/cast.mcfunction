@@ -1,3 +1,6 @@
+# tag selected
+execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run tag @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] add selected
+
 # execute
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run function blockbuster:ray/execute
 
@@ -14,7 +17,6 @@ execute as @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=53}] run s
 # kill ray
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run kill @s
 execute as @e[type=area_effect_cloud,tag=ray] if score #steps global matches 128.. run kill @s
-execute as @e[type=armor_stand,tag=block] run data modify entity @s ArmorItems[0] set value {}
 
 # repeat
 scoreboard players add #steps global 1
