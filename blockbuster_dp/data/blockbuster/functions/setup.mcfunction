@@ -89,10 +89,6 @@ scoreboard objectives add self_vel_x dummy
 scoreboard objectives add self_vel_y dummy
 scoreboard objectives add self_vel_z dummy
 
-scoreboard objectives add parent_vel_x dummy
-scoreboard objectives add parent_vel_y dummy
-scoreboard objectives add parent_vel_z dummy
-
 scoreboard objectives add last_rot_x dummy
 scoreboard objectives add last_rot_y dummy
 scoreboard objectives add last_rot_z dummy
@@ -191,6 +187,7 @@ scoreboard players set #2 constants 2
 scoreboard players set #5 constants 5
 scoreboard players set #10 constants 10
 scoreboard players set #20 constants 20
+scoreboard players set #30 constants 30
 scoreboard players set #100 constants 100
 scoreboard players set #160 constants 160
 scoreboard players set #180 constants 180

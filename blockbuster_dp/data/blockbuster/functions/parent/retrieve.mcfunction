@@ -11,15 +11,7 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] pare
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_rot_y = @e[type=armor_stand,tag=block,scores={temp=2}] self_rot_y
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_rot_z = @e[type=armor_stand,tag=block,scores={temp=2}] self_rot_z
 
-# retrieve parent velocities
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_vel_x = @e[type=armor_stand,tag=block,scores={temp=2}] self_vel_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_vel_y = @e[type=armor_stand,tag=block,scores={temp=2}] self_vel_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_vel_z = @e[type=armor_stand,tag=block,scores={temp=2}] self_vel_z
-
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] self_vel_x += @e[type=armor_stand,tag=block,scores={temp=1}] parent_vel_x
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] self_vel_y += @e[type=armor_stand,tag=block,scores={temp=1}] parent_vel_y
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] self_vel_z += @e[type=armor_stand,tag=block,scores={temp=1}] parent_vel_z
-
+# retrieve parent angular velocity
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_omega_x = @e[type=armor_stand,tag=block,scores={temp=2}] self_omega_x
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_omega_y = @e[type=armor_stand,tag=block,scores={temp=2}] self_omega_y
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] parent_omega_z = @e[type=armor_stand,tag=block,scores={temp=2}] self_omega_z
