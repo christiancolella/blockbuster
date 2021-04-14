@@ -46,4 +46,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # delete keyframe if block is gone
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 1
 function blockbuster:keyframe/delete
+kill @e[type=area_effect_cloud,tag=keyframe,scores={temp=1}]
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0

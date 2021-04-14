@@ -89,7 +89,6 @@ scoreboard players set #depth global 0
 function blockbuster:transform
 
 ## merge transformations
-
 execute as @e[type=armor_stand,tag=block,tag=has_parent] run scoreboard players operation @s temp = @s parent_vel_x
 execute as @e[type=armor_stand,tag=block,tag=!has_parent] run scoreboard players operation @s temp = @s self_vel_x
 execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #150 constants

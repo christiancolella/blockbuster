@@ -230,4 +230,6 @@ execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.2 warped_fu
 execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.3 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Hide\",\"color\":\"dark_gray\",\"italic\":false}"},CustomModelData:6}
 execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.4 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Unhide All\",\"color\":\"gray\",\"italic\":false}"},CustomModelData:7}
 execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.5 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Delete\",\"color\":\"dark_red\",\"italic\":false}"},CustomModelData:8}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.6 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Delete Hierarchy\",\"color\":\"dark_red\",\"italic\":false}"},CustomModelData:59}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.7 air
 execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.8 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Back\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}

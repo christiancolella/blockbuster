@@ -152,6 +152,15 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1}] run kill @e[type=area_
 kill @e[type=armor_stand,tag=block,scores={temp=1}]
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
+# delete hierarchy
+execute as @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=59}] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={temp=1}] run function blockbuster:misc/delete_hierarchy
+execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run kill @s
+execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_3 run kill @s
+kill @e[type=armor_stand,tag=block,scores={temp=1}]
+kill @e[type=armor_stand,tag=block,scores={temp=4}]
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+
 # move
 
 ## forwards 2
