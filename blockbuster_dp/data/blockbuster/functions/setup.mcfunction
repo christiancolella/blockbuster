@@ -187,7 +187,7 @@ team modify light_purple color light_purple
 team modify yellow color yellow
 team modify white color white
 
-title @a times 5 0 5
+title @a[tag=blockbuster] times 5 0 5
 
 # set constants
 scoreboard players set #-1 constants -1

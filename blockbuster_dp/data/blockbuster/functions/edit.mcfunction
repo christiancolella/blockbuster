@@ -58,7 +58,7 @@ execute as @e[type=armor_stand,tag=awaiting_parent] run data merge entity @s {Gl
 # inventory
 
 ## default
-execute as @a unless score @s edit matches 1.. run replaceitem entity @s hotbar.8 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Edit Mode\",\"color\":\"blue\",\"italic\":false}"},CustomModelData:-1}
+execute as @a[tag=blockbuster] unless score @s edit matches 1.. run replaceitem entity @s hotbar.8 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Edit Mode\",\"color\":\"blue\",\"italic\":false}"},CustomModelData:-1}
 
 ## home edit
 execute as @a[scores={edit=1}] run replaceitem entity @s hotbar.0 bee_spawn_egg{display:{Name:"{\"text\":\"New Block\",\"color\":\"blue\",\"italic\":false}"},CustomModelData:1,EntityTag:{id:"armor_stand",Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,ArmorItems:[{},{},{},{id:"minecraft:diamond_block",Count:1b}],Pose:{RightArm:[0.0f,0.0f,-30.0f],LeftArm:[0.0f,0.0f,30.0f],RightLeg:[180.0f,0.0f,0.0f],LeftLeg:[180.0f,0.0f,0.0f]},DisabledSlots:4079166,Tags:["new_block"]}}

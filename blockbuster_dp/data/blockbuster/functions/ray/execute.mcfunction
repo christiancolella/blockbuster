@@ -443,7 +443,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=1..2}] run scoreboard play
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # update parent
-function blockbuster:parent/send
+function blockbuster:parent/send_to_parent
 execute as @e[type=armor_stand,tag=block] run scoreboard players set @s global 0
 
 # new keyframe
