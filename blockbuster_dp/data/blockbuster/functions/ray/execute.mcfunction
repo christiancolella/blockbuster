@@ -172,6 +172,7 @@ scoreboard players set @e[type=armor_stand,tag=block,tag=delete_hierarchy] temp 
 execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={temp=1}] run function blockbuster:misc/delete_hierarchy
 execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run kill @s
 execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=4},limit=1] self_uuid_3 run kill @s
+execute as @e[type=armor_stand,tag=block,scores={temp=1}] run kill @e[type=area_effect_cloud,tag=ray]
 kill @e[type=armor_stand,tag=block,scores={temp=1}]
 kill @e[type=armor_stand,tag=block,scores={temp=4}]
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
@@ -571,6 +572,8 @@ execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard 
 execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] initial_rot_y = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_y
 execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] initial_rot_z = @e[type=armor_stand,tag=block,scores={temp=1}] initial_rot_z
 execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] anim_length = @e[type=armor_stand,tag=block,scores={temp=1}] anim_length
+execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
+execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] play = @e[type=armor_stand,tag=block,scores={temp=1}] play
 execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run data modify entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] ArmorItems[3] set from entity @e[type=armor_stand,tag=block,scores={temp=1},limit=1] ArmorItems[3]
 execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] store result score @p[scores={temp=1}] parent_uuid_0 run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[0]
 execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] store result score @p[scores={temp=1}] parent_uuid_1 run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[1]
@@ -579,7 +582,8 @@ execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] store result sc
 scoreboard players set @e[type=armor_stand,tag=block,tag=new_copy] temp 9
 tag @e[type=armor_stand,tag=block,tag=new_copy] remove new_copy
 scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
-function blockbuster:copy/main
+execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:copy/main
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 # transform and timeline text
