@@ -2,6 +2,7 @@
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run tag @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] add selected
 
 # execute
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run function blockbuster:ray/execute
 
 ## unhide all
@@ -13,6 +14,9 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ## stop all
 execute as @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=53}] run scoreboard players set @e[type=armor_stand,tag=block] play 0
+
+# paste
+execute as @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=56}] run tag @p[tag=copy,scores={temp=1}] remove copy
 
 # kill ray
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run kill @s
