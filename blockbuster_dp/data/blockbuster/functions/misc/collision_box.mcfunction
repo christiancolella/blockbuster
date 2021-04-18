@@ -7,4 +7,3 @@ execute at @e[type=area_effect_cloud,tag=remove_barrier] if block ~ ~ ~ barrier 
 kill @e[type=area_effect_cloud,tag=remove_barrier]
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 2
 execute if entity @e[type=armor_stand,tag=block,tag=has_collision,scores={temp=0}] run function blockbuster:misc/collision_box
-scoreboard players set @e[type=armor_stand,tag=block] temp 0

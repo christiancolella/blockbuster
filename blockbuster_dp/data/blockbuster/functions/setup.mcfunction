@@ -22,6 +22,8 @@ scoreboard objectives add parent_pos_x dummy
 scoreboard objectives add parent_pos_y dummy
 scoreboard objectives add parent_pos_z dummy
 
+scoreboard objectives add has_rot dummy
+
 scoreboard objectives add self_rot_x dummy
 scoreboard objectives add self_rot_y dummy
 scoreboard objectives add self_rot_z dummy
@@ -69,9 +71,6 @@ scoreboard objectives add parent_matrix_8 dummy
 scoreboard objectives add matrix_scale_x dummy
 scoreboard objectives add matrix_scale_y dummy
 scoreboard objectives add matrix_scale_z dummy
-
-scoreboard objectives add has_rot dummy
-scoreboard objectives add has_hand_item dummy
 
 scoreboard objectives add initial_pos_x dummy
 scoreboard objectives add initial_pos_y dummy
@@ -150,8 +149,10 @@ scoreboard objectives add last_time dummy
 scoreboard objectives add delta_time dummy
 
 # for edit mode
+scoreboard objectives add has_hand_item dummy
 scoreboard objectives add click minecraft.used:minecraft.warped_fungus_on_a_stick
 scoreboard objectives add edit dummy
+scoreboard objectives add selected dummy
 
 team add black
 team add dark_blue

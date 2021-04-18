@@ -1,0 +1,13 @@
+execute as @a[scores={edit=17..18}] run replaceitem entity @s hotbar.0 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Add Parent\",\"color\":\"yellow\",\"italic\":false}"},CustomModelData:4}
+execute as @a[scores={edit=19..20}] run replaceitem entity @s hotbar.0 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Remove Parent\",\"color\":\"red\",\"italic\":false}"},CustomModelData:5}
+execute as @a[scores={edit=17}] run replaceitem entity @s hotbar.1 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Add Collision Box\",\"color\":\"dark_green\",\"italic\":false}"},CustomModelData:57}
+execute as @a[scores={edit=18}] run replaceitem entity @s hotbar.1 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Remove Collision Box\",\"color\":\"red\",\"italic\":false}"},CustomModelData:58}
+execute as @a[scores={edit=19}] run replaceitem entity @s hotbar.1 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Add Collision Box\",\"color\":\"dark_green\",\"italic\":false}"},CustomModelData:57}
+execute as @a[scores={edit=20}] run replaceitem entity @s hotbar.1 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Remove Collision Box\",\"color\":\"red\",\"italic\":false}"},CustomModelData:58}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.2 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Copy\",\"color\":\"#232393\",\"italic\":false}"},CustomModelData:55}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.3 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Hide\",\"color\":\"dark_gray\",\"italic\":false}"},CustomModelData:6}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.4 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Unhide All\",\"color\":\"gray\",\"italic\":false}"},CustomModelData:7}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.5 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Delete\",\"color\":\"dark_red\",\"italic\":false}"},CustomModelData:8}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.6 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Delete Hierarchy\",\"color\":\"dark_red\",\"italic\":false}"},CustomModelData:59}
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.7 air
+execute as @a[scores={edit=17..20}] run replaceitem entity @s hotbar.8 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Back\",\"color\":\"red\",\"italic\":false}"},CustomModelData:1}
