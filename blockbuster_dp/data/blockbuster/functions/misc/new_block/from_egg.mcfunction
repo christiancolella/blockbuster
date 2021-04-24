@@ -27,6 +27,6 @@ scoreboard players set @e[type=armor_stand,tag=new_block] parent_matrix_8 1000
 scoreboard players set @e[type=armor_stand,tag=new_block] anim_length 20
 scoreboard players set @e[type=armor_stand,tag=new_block] time 0
 
-execute as @e[type=armor_stand,tag=new_block] run data merge entity @s {ArmorItems:[{id:"minecraft:melon",Count:1b,tag:{Temp:[0],InitialPos:[0,0,0]}},{},{},{id:"minecraft:diamond_block",Count:1b}]}
+execute as @e[type=armor_stand,tag=new_block] run data merge entity @s {ArmorItems:[{id:"minecraft:melon",Count:1b,tag:{Temp:[0],TempDouble:[0.0d],InitialPos:[0,0,0]}},{},{},{id:"minecraft:diamond_block",Count:1b}]}
 
 execute as @e[type=armor_stand,tag=new_block] run tag @s remove new_block

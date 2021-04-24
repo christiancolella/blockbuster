@@ -4,7 +4,6 @@ execute as @e[type=area_effect_cloud,tag=ray,tag=execute] run scoreboard players
 
 # hitbox
 tag @e[type=armor_stand,tag=block,scores={selected=1..2}] add selected
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=selected] temp 1
 
 ## summon new hitbox stands

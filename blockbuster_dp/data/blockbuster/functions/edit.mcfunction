@@ -23,7 +23,7 @@ tag @e[type=armor_stand,tag=block,tag=selected] add last_selected
 tag @e[type=armor_stand,tag=block,tag=!selected] remove last_selected
 tag @e[type=armor_stand,tag=block] remove selected
 execute as @e[type=armor_stand,tag=block,tag=hidden] run data modify entity @s ArmorItems[3] set value {}
-function blockbuster:ray/setup
+execute if entity @a[tag=blockbuster] run function blockbuster:ray/setup
 scoreboard players set @a temp 0
 
 ## delete old hitbox stands
