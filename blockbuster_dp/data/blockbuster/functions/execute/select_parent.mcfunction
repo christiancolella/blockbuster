@@ -11,7 +11,7 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_y = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] last_init_pos_z = @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z
 tag @e[type=armor_stand,tag=block,scores={temp=2}] remove awaiting_parent
-execute as @e[type=armor_stand,tag=block,scores={temp=1}] run scoreboard players set @p[scores={temp=1}] edit 17
+scoreboard players set @p[scores={temp=1}] edit 17
 scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0

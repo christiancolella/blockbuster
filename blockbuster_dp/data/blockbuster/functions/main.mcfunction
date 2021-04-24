@@ -19,13 +19,16 @@ function blockbuster:edit
 tag @e[type=armor_stand,tag=block] remove is_parent
 tag @e[type=armor_stand,tag=block] remove has_parent
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
-function blockbuster:parent/relation
+execute if entity @e[type=armor_stand,tag=block] run function blockbuster:parent/relation
 
 scoreboard players set #depth global 0
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] temp 1
 scoreboard players set @e[type=armor_stand,tag=block] depth -1
 scoreboard players set @e[type=armor_stand,tag=block,tag=!has_parent] depth 0
-function blockbuster:parent/depth
+execute if entity @e[type=armor_stand,tag=block,tag=has_parent] run function blockbuster:parent/depth
+scoreboard players operation #maxdepth global = #depth global
+scoreboard players remove #maxdepth global 1
 
 # animate
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
@@ -33,12 +36,23 @@ scoreboard players set @e[type=armor_stand,tag=block] global 0
 function blockbuster:animate
 
 # compute and apply parented transformations
-
-## set identity matrix if no parent
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set #depth global 0
 function blockbuster:transform
+
+# velocity
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_x = @s initial_pos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_x -= @s last_init_pos_x
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_x = @s initial_pos_x
+
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_y = @s initial_pos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_y -= @s last_init_pos_y
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_y = @s initial_pos_y
+
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_z = @s initial_pos_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_z -= @s last_init_pos_z
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_z = @s initial_pos_z
 
 ## merge transformations
 execute as @e[type=armor_stand,tag=block,tag=has_parent] run scoreboard players operation @s temp = @s parent_vel_x
@@ -75,3 +89,10 @@ execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard playe
 execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard players operation @s last_self_pos_y += #726 constants
 execute as @e[type=armor_stand,tag=block,tag=has_collision] run scoreboard players operation @s last_self_pos_z = @s self_pos_z
 execute at @e[type=armor_stand,tag=block,tag=has_collision] positioned ~ ~0.726 ~ if block ~ ~ ~ air run setblock ~ ~ ~ barrier
+
+# locking
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @e[type=armor_stand,tag=block] global 0
+execute if entity @e[type=armor_stand,tag=block,tag=locking] run function blockbuster:misc/locking
+
+# locked

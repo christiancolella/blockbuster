@@ -9,7 +9,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/linear
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/linear
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x = #output_value global
 
 ## y
@@ -18,7 +18,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/linear
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/linear
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y = #output_value global
 
 ## z
@@ -27,7 +27,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/linear
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/linear
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -41,7 +41,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/linear
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/linear
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_x = #output_value global
 
 ## y
@@ -50,7 +50,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/linear
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/linear
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_y = #output_value global
 
 ## z
@@ -59,7 +59,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/linear
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/linear
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -73,7 +73,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_in
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x = #output_value global
 
 ## y
@@ -82,7 +82,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_in
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y = #output_value global
 
 ## z
@@ -91,7 +91,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_in
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -105,7 +105,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_in
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_x = #output_value global
 
 ## y
@@ -114,7 +114,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_in
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_y = #output_value global
 
 ## z
@@ -123,7 +123,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_in
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -137,7 +137,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x = #output_value global
 
 ## y
@@ -146,7 +146,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y = #output_value global
 
 ## z
@@ -155,7 +155,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -169,7 +169,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_x = #output_value global
 
 ## y
@@ -178,7 +178,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_y = #output_value global
 
 ## z
@@ -187,7 +187,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -201,7 +201,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_in_and_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_x = #output_value global
 
 ## y
@@ -210,7 +210,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_in_and_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_y = #output_value global
 
 ## z
@@ -219,7 +219,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_pos_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_pos_time
-function blockbuster:math/interpolate/ease_in_and_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_pos_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1
@@ -233,7 +233,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_in_and_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_x = #output_value global
 
 ## y
@@ -242,7 +242,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_in_and_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_y = #output_value global
 
 ## z
@@ -251,7 +251,7 @@ scoreboard players operation #to_value global = @e[type=armor_stand,tag=block,sc
 scoreboard players operation #time global = @e[type=armor_stand,tag=block,scores={temp=2}] time
 scoreboard players operation #from_time global = @e[type=armor_stand,tag=block,scores={temp=2}] from_rot_time
 scoreboard players operation #to_time global = @e[type=armor_stand,tag=block,scores={temp=2}] to_rot_time
-function blockbuster:math/interpolate/ease_in_and_out
+execute if entity @e[type=armor_stand,tag=block,scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] initial_rot_z = #output_value global
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 1

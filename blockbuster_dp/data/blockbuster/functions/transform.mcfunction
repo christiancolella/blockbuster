@@ -14,7 +14,7 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp mat
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp > @s correction_scale run scoreboard players operation @s correction_scale = @s temp
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale *= #800 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale /= #1000 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale += #15820 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale += #18000 constants
 
 ## matrix scale = 1 - 0.002 * omega
 
@@ -231,19 +231,6 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_z = @s parent_rot_z
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_rot_z += @s initial_rot_z
 
-# velocity
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_x = @s initial_pos_x
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_x -= @s last_init_pos_x
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_x = @s initial_pos_x
-
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_y = @s initial_pos_y
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_y -= @s last_init_pos_y
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_y = @s initial_pos_y
-
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_z = @s initial_pos_z
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_z -= @s last_init_pos_z
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_z = @s initial_pos_z
-
 # angular velocity
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_omega_x = @s parent_omega_x
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s temp = @s initial_rot_x
@@ -274,15 +261,15 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard playe
 
 # compute matrix
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
-function blockbuster:transform/compute_trig
-function blockbuster:transform/compute_matrix
+execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1}] run function blockbuster:transform/compute_trig
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1}] run function blockbuster:transform/compute_matrix
 
 # send to children
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
-function blockbuster:parent/send_to_children
+execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1}] run function blockbuster:parent/send_to_children
 
 # repeat at next layer
 scoreboard players add #depth global 1
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 execute if score #depth global <= #maxdepth global run function blockbuster:transform
-scoreboard players set @e[type=armor_stand,tag=block] temp 0

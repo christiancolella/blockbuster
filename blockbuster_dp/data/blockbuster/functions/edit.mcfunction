@@ -22,9 +22,12 @@ tag @e[type=armor_stand,tag=block] remove parent_glow
 tag @e[type=armor_stand,tag=block,tag=selected] add last_selected
 tag @e[type=armor_stand,tag=block,tag=!selected] remove last_selected
 tag @e[type=armor_stand,tag=block] remove selected
+execute as @e[type=armor_stand,tag=block,tag=hidden] run data modify entity @s ArmorItems[3] set value {}
 function blockbuster:ray/setup
+scoreboard players set @a temp 0
 
 ## delete old hitbox stands
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 execute as @e[type=armor_stand,tag=block,tag=last_selected,tag=!selected,limit=1] run scoreboard players set @s temp 1
 execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run kill @s
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
@@ -44,7 +47,7 @@ team join light_purple @e[type=armor_stand,tag=block,scores={edit=23..28}]
 team join dark_aqua @e[type=armor_stand,tag=block,scores={edit=45..48}]
 team join dark_purple @e[type=armor_stand,tag=block,scores={edit=29..31}]
 team join red @e[type=armor_stand,tag=block,scores={edit=32}]
-team join dark_purple @e[type=armor_stand,tag=block,scores={edit=49..53}]
+team join dark_purple @e[type=armor_stand,tag=block,scores={edit=49..52}]
 team join dark_blue @e[type=armor_stand,tag=block,scores={edit=34..38}]
 team join green @e[type=armor_stand,tag=block,scores={edit=18}]
 team join red @e[type=armor_stand,tag=block,scores={edit=19}]

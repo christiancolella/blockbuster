@@ -14,4 +14,3 @@ execute as @e[type=area_effect_cloud,tag=keyframe,scores={temp=1}] run scoreboar
 scoreboard players set @e[type=armor_stand,tag=block,scores={global=1}] global 0
 scoreboard players set @e[type=armor_stand,tag=block,scores={global=2}] global 1
 execute if entity @e[type=armor_stand,tag=block,tag=has_parent,scores={global=1}] run function blockbuster:parent/on_remove
-scoreboard players set @e[type=armor_stand,tag=block] global 0

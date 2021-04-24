@@ -26,4 +26,3 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] self
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 2
 execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1,temp=0}] run function blockbuster:transform/compute_trig
-scoreboard players set @e[type=armor_stand,tag=block] temp 0

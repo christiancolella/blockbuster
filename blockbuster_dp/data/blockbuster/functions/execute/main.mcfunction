@@ -1,9 +1,10 @@
 # tag selected
-execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] selected 1
+execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,tag=!locking,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] selected 1
 execute as @e[type=area_effect_cloud,tag=ray,tag=execute] run scoreboard players set @e[type=armor_stand,tag=block,scores={selected=1}] selected 2
-tag @e[type=armor_stand,tag=block,scores={selected=1..2}] add selected
 
 # hitbox
+tag @e[type=armor_stand,tag=block,scores={selected=1..2}] add selected
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=selected] temp 1
 
 ## summon new hitbox stands
@@ -135,9 +136,18 @@ tag @e[type=armor_stand,tag=block,scores={selected=2,edit=58}] remove has_collis
 
 # copy
 scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=55}] temp 1
-execute if entity @e[type=armor_stand,tag=block,scores={selected=2,edit=55}] run function blockbuster:execute/rotate/5
+execute if entity @e[type=armor_stand,tag=block,scores={selected=2,edit=55}] run function blockbuster:execute/copy
+
+# lock
+tag @e[type=armor_stand,tag=block,scores={selected=2,edit=60}] add locking
+scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=60}] time -1
+scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=60}] play 1
+scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=60}] global 1
+execute if entity @e[type=armor_stand,tag=block,scores={global=1}] run function blockbuster:parent/send_to_parent
 
 # transform and timeline text
-function blockbuster:misc/actionbar
+execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=2}] run function blockbuster:misc/actionbar
+execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=10..44}] run function blockbuster:misc/actionbar
+execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=49..52}] run function blockbuster:misc/actionbar
 
 scoreboard players set @e[type=armor_stand,tag=block] selected 0

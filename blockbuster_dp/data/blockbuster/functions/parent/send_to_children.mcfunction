@@ -56,4 +56,3 @@ scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 3
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 0
 
 execute if entity @e[type=armor_stand,tag=block,scores={global=1,temp=0}] run function blockbuster:parent/send_to_children
-scoreboard players set @e[type=armor_stand,tag=block] temp 0

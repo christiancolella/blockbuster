@@ -1,4 +1,4 @@
-execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ as @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1] run scoreboard players set @s temp 1
+scoreboard players set @e[type=armor_stand,tag=block,scores={selected=1..2}] temp 1
 
 data merge storage blockbuster:main {signs:["","","","","","","","","","","",""]}
 data merge storage blockbuster:main {timeline:["","","","","","","","","","","","","","","","","","","",""]}
@@ -356,11 +356,8 @@ execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=31}] if entity 
 
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=32..33}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"storage":"blockbuster:strings","nbt":"transition_type","interpret":true},{"text":" |","color":"#232393"},{"storage":"blockbuster:strings","nbt":"keyframe_transform","interpret":true}]
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=32..33}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=0}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
-execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=49..53}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"storage":"blockbuster:strings","nbt":"transition_type","interpret":true},{"text":" |","color":"#232393"},{"storage":"blockbuster:strings","nbt":"keyframe_transform","interpret":true}]
-execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=49..53}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=0}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
+execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=49..52}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"storage":"blockbuster:strings","nbt":"transition_type","interpret":true},{"text":" |","color":"#232393"},{"storage":"blockbuster:strings","nbt":"keyframe_transform","interpret":true}]
+execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=49..52}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=0}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
 
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=34..38}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=1}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline_short","interpret":true},{"storage":"blockbuster:strings","nbt":"transition_type","interpret":true}]
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=34..38}] if entity @e[type=armor_stand,tag=block,scores={temp=1,keyframe_type=0}] run title @p[scores={temp=1}] actionbar [{"storage":"blockbuster:strings","nbt":"timeline","interpret":true}]
-
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
-scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0

@@ -202,7 +202,7 @@ scoreboard players set #180 constants 180
 scoreboard players set #726 constants 726
 scoreboard players set #800 constants 800
 scoreboard players set #1000 constants 1000
-scoreboard players set #15820 constants 15820
+scoreboard players set #18000 constants 18000
 scoreboard players set #90000 constants 90000
 scoreboard players set #180000 constants 180000
 scoreboard players set #360000 constants 360000
