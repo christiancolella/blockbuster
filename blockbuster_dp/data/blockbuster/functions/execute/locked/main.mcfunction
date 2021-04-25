@@ -35,6 +35,10 @@ execute if entity @e[type=armor_stand,tag=locked,tag=delete_hierarchy] run funct
 scoreboard players set @e[type=armor_stand,tag=locked,scores={selected=2,edit=55}] temp 1
 execute if entity @e[type=armor_stand,tag=locked,scores={selected=2,edit=55}] run function blockbuster:execute/locked/copy
 
+# collision box
+tag @e[type=armor_stand,tag=locked,scores={selected=2,edit=57}] add has_collision
+tag @e[type=armor_stand,tag=locked,scores={selected=2,edit=58}] remove has_collision
+
 # actionbar text
 function blockbuster:execute/locked/actionbar
 

@@ -27,13 +27,13 @@ execute as @e[type=armor_stand,tag=block,tag=locking] run data modify entity @s 
 execute as @e[type=armor_stand,tag=block,tag=locking] run data modify entity @s ArmorItems[0].tag.RotY append from entity @s Pose.Head[1]
 execute as @e[type=armor_stand,tag=block,tag=locking] run data modify entity @s ArmorItems[0].tag.RotZ append from entity @s Pose.Head[2]
 
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run data modify entity @s ArmorItems[0].tag.BackupPosX set from entity @s ArmorItems[0].tag.PosX
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run data modify entity @s ArmorItems[0].tag.BackupPosY set from entity @s ArmorItems[0].tag.PosY
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run data modify entity @s ArmorItems[0].tag.BackupPosZ set from entity @s ArmorItems[0].tag.PosZ
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run data modify entity @s ArmorItems[0].tag.BackupRotX set from entity @s ArmorItems[0].tag.RotX
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run data modify entity @s ArmorItems[0].tag.BackupRotY set from entity @s ArmorItems[0].tag.RotY
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run data modify entity @s ArmorItems[0].tag.BackupRotZ set from entity @s ArmorItems[0].tag.RotZ
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run data modify entity @s ArmorItems[0].tag.BackupPosX set from entity @s ArmorItems[0].tag.PosX
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run data modify entity @s ArmorItems[0].tag.BackupPosY set from entity @s ArmorItems[0].tag.PosY
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run data modify entity @s ArmorItems[0].tag.BackupPosZ set from entity @s ArmorItems[0].tag.PosZ
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run data modify entity @s ArmorItems[0].tag.BackupRotX set from entity @s ArmorItems[0].tag.RotX
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run data modify entity @s ArmorItems[0].tag.BackupRotY set from entity @s ArmorItems[0].tag.RotY
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run data modify entity @s ArmorItems[0].tag.BackupRotZ set from entity @s ArmorItems[0].tag.RotZ
 
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run tag @s add locked
-execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time = @s anim_length run tag @s remove block
-execute as @e[type=armor_stand,tag=locking,tag=locked] if score @s time = @s anim_length run tag @s remove locking
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run tag @s add locked
+execute as @e[type=armor_stand,tag=block,tag=locking] if score @s time >= @s anim_length run tag @s remove block
+execute as @e[type=armor_stand,tag=locking,tag=locked] if score @s time >= @s anim_length run tag @s remove locking

@@ -7,7 +7,7 @@ execute if entity @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:b
 execute if entity @e[type=armor_stand,tag=new_block] run function blockbuster:misc/new_block/from_egg
 
 # collision box
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @e[type=armor_stand] temp 0
 function blockbuster:misc/collision_box
 
 # edit mode
@@ -20,7 +20,7 @@ tag @e[type=armor_stand] remove is_parent
 tag @e[type=armor_stand] remove has_parent
 scoreboard players set @e[type=armor_stand] temp 0
 execute if entity @e[type=armor_stand,tag=block] run function blockbuster:parent/relation
-execute if entity @e[type=armor_stand,tag=locked] run function blockbuster:parent/locked_relation
+execute if entity @e[type=armor_stand,tag=locked] run function blockbuster:parent/locked/relation
 
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
@@ -34,6 +34,7 @@ scoreboard players remove #maxdepth global 1
 # animate
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 function blockbuster:parent/send_animation
+function blockbuster:parent/locked/send_animation
 
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
@@ -84,13 +85,13 @@ execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[0] fl
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
 execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
 
-execute as @e[type=armor_stand,tag=block] store success score @s has_rot run data get entity @s Pose.Head
-execute as @e[type=armor_stand,tag=block] if score @s has_rot matches 0 run data merge entity @s {Pose:{Head:[0.001f,0.001f,0.001f]}}
+execute as @e[type=armor_stand] store success score @s has_rot run data get entity @s Pose.Head
+execute as @e[type=armor_stand] if score @s has_rot matches 0 run data merge entity @s {Pose:{Head:[0.001f,0.001f,0.001f]}}
 
 # collision box continued
-execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_x run data get entity @s Pos[0]
-execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_y run data get entity @s Pos[1]
-execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_z run data get entity @s Pos[2]
+execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_x run data get entity @s Pos[0] 1000
+execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_y run data get entity @s Pos[1] 1000
+execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_z run data get entity @s Pos[2] 1000
 
 execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_x = @s self_pos_x
 execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_y = @s self_pos_y

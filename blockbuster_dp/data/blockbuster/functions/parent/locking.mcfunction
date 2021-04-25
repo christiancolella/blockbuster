@@ -7,7 +7,7 @@ execute as @e[type=armor_stand,tag=block,scores={temp=3}] store result entity @s
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=3}] temp 4
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 0
-execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:misc/locking
+execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:parent/locking
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=4}] temp 1
-execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:misc/locking
+execute if entity @e[type=armor_stand,tag=block,scores={temp=1}] run function blockbuster:parent/locking

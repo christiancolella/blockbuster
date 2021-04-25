@@ -7,7 +7,11 @@ execute as @e[type=armor_stand,tag=locked,scores={temp=9}] store result score @s
 execute as @e[type=armor_stand,tag=locked,scores={temp=9}] store result score @s self_uuid_3 run data get entity @s UUID[3]
 
 execute as @e[type=armor_stand,tag=locked] if score @s parent_uuid_0 = @e[type=armor_stand,tag=locked,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=locked,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=locked,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=locked,scores={temp=1},limit=1] self_uuid_3 run scoreboard players set @s temp 2
-execute as @e[type=armor_stand,tag=locked,scores={temp=2}] at @s run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,Pose:{RightArm:[0.0f,0.0f,-30.0f],LeftArm:[0.0f,0.0f,30.0f],RightLeg:[180.0f,0.0f,0.0f],LeftLeg:[180.0f,0.0f,0.0f]},DisabledSlots:4079166,Tags:["locked","new_copy"]}
+execute as @e[type=armor_stand,tag=locked,scores={temp=2}] at @s run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,Pose:{RightArm:[0.0f,0.0f,-30.0f],LeftArm:[0.0f,0.0f,30.0f],RightLeg:[180.0f,0.0f,0.0f],LeftLeg:[180.0f,0.0f,0.0f]},ArmorItems:[{id:"minecraft:melon",Count:1b,tag:{Temp:[0],TempDouble:[0.0d],InitialPos:[0,0,0]}},{},{},{id:"minecraft:diamond_block",Count:1b}],DisabledSlots:4079166,Tags:["locked","new_copy"]}
+
+scoreboard players set @e[type=armor_stand,tag=locked,tag=new_copy] play 1
+scoreboard players operation @e[type=armor_stand,tag=locked,tag=new_copy] anim_length = @e[type=armor_stand,tag=locked,scores={temp=1}] anim_length
+
 scoreboard players set @e[type=armor_stand,tag=locked,tag=new_copy] temp 0
 execute if entity @e[type=armor_stand,tag=locked,scores={temp=9}] run scoreboard players operation @e[type=armor_stand,tag=locked,tag=new_copy] parent_uuid_0 = @e[type=armor_stand,tag=locked,scores={temp=9}] self_uuid_0
 execute if entity @e[type=armor_stand,tag=locked,scores={temp=9}] run scoreboard players operation @e[type=armor_stand,tag=locked,tag=new_copy] parent_uuid_1 = @e[type=armor_stand,tag=locked,scores={temp=9}] self_uuid_1

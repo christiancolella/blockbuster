@@ -1,0 +1,3 @@
+scoreboard players set @e[type=armor_stand,tag=locked,scores={temp=1}] temp 2
+execute as @e[type=armor_stand,tag=locked] if score @s self_uuid_0 = @e[type=armor_stand,tag=locked,scores={temp=2},limit=1] parent_uuid_0 if score @s self_uuid_1 = @e[type=armor_stand,tag=locked,scores={temp=2},limit=1] parent_uuid_1 if score @s self_uuid_2 = @e[type=armor_stand,tag=locked,scores={temp=2},limit=1] parent_uuid_2 if score @s self_uuid_3 = @e[type=armor_stand,tag=locked,scores={temp=2},limit=1] parent_uuid_3 run scoreboard players set @s temp 1
+execute if entity @e[type=armor_stand,tag=locked,tag=has_parent,scores={temp=1}] run function blockbuster:copy/locked_find_root

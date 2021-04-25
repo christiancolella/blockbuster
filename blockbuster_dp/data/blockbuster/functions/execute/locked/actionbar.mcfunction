@@ -5,7 +5,7 @@ execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=39..44}] run ti
 
 # animate
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=3}] run title @p[scores={temp=1}] actionbar {"text":"You cannot animate locked blocks!","color":"red"}
-execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=20..38}] run title @p[scores={temp=1}] actionbar {"text":"You cannot animate locked blocks!","color":"red"}
+execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=18..38}] run title @p[scores={temp=1}] actionbar {"text":"You cannot animate locked blocks!","color":"red"}
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=45..52}] run title @p[scores={temp=1}] actionbar {"text":"You cannot animate locked blocks!","color":"red"}
 execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=3}] run title @p[scores={temp=1}] actionbar {"text":"You cannot animate locked blocks!","color":"red"}
 
