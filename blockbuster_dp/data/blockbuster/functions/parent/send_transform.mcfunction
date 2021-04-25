@@ -47,12 +47,7 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] pare
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_matrix_7 = @e[type=armor_stand,tag=block,scores={temp=1}] self_matrix_7
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] parent_matrix_8 = @e[type=armor_stand,tag=block,scores={temp=1}] self_matrix_8
 
-# retrieve animation data
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] anim_length = @e[type=armor_stand,tag=block,scores={temp=1}] anim_length
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
-scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] play = @e[type=armor_stand,tag=block,scores={temp=1}] play
-
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 3
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 0
 
-execute if entity @e[type=armor_stand,tag=block,scores={global=1,temp=0}] run function blockbuster:parent/send_to_children
+execute if entity @e[type=armor_stand,tag=block,scores={global=1,temp=0}] run function blockbuster:parent/send_transform

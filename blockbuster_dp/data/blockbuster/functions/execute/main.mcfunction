@@ -1,4 +1,3 @@
-# tag selected
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,tag=!locking,distance=..0.5,limit=1,sort=nearest] run scoreboard players set @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5,limit=1,sort=nearest] selected 1
 execute as @e[type=area_effect_cloud,tag=ray,tag=execute] run scoreboard players set @e[type=armor_stand,tag=block,scores={selected=1}] selected 2
 
@@ -38,6 +37,7 @@ scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=8}]
 execute if entity @e[type=armor_stand,tag=block,scores={selected=2,edit=8}] run function blockbuster:execute/delete
 
 # delete hierarchy
+scoreboard players set @e[type=armor_stand] temp 0
 scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=59}] temp 1
 scoreboard players set @e[type=armor_stand,tag=block,tag=delete_hierarchy] temp 1
 execute if entity @e[type=armor_stand,tag=block,scores={selected=2,edit=59}] run function blockbuster:execute/delete_hierarchy
@@ -144,9 +144,10 @@ scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=60}
 scoreboard players set @e[type=armor_stand,tag=block,scores={selected=2,edit=60}] global 1
 execute if entity @e[type=armor_stand,tag=block,scores={global=1}] run function blockbuster:parent/send_to_parent
 
-# transform and timeline text
-execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=2}] run function blockbuster:misc/actionbar
-execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=10..44}] run function blockbuster:misc/actionbar
-execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=49..52}] run function blockbuster:misc/actionbar
+execute if entity @e[type=area_effect_cloud,tag=ray,scores={edit=60}] run title @p[scores={temp=1}] actionbar {"text":"Warning: Locking blocks is permanent and cannot be undone!","color":"red"}
+
+# actionbar text
+execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=2}] run function blockbuster:execute/actionbar
+execute if entity @e[type=armor_stand,tag=block,scores={selected=1,edit=10..52}] run function blockbuster:execute/actionbar
 
 scoreboard players set @e[type=armor_stand,tag=block] selected 0

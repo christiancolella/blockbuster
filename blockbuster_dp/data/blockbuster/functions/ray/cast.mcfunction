@@ -1,8 +1,10 @@
 # execute
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run function blockbuster:execute/main
+execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=locked,tag=!hidden,distance=..0.5] run function blockbuster:execute/locked/main
 
 # kill ray
 execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=block,tag=!hidden,distance=..0.5] run kill @s
+execute as @e[type=area_effect_cloud,tag=ray] at @s positioned ~ ~-0.75 ~ if entity @e[type=armor_stand,tag=locked,tag=!hidden,distance=..0.5] run kill @s
 execute as @e[type=area_effect_cloud,tag=ray] if score #steps global matches 64.. run kill @s
 
 # repeat

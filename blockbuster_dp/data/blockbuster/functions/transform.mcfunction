@@ -14,7 +14,7 @@ execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp mat
 execute as @e[type=armor_stand,tag=block,scores={global=1}] if score @s temp > @s correction_scale run scoreboard players operation @s correction_scale = @s temp
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale *= #800 constants
 execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale /= #1000 constants
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale += #18000 constants
+execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s correction_scale += #21000 constants
 
 ## matrix scale = 1 - 0.002 * omega
 
@@ -267,7 +267,7 @@ execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1}]
 
 # send to children
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
-execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1}] run function blockbuster:parent/send_to_children
+execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1}] run function blockbuster:parent/send_transform
 
 # repeat at next layer
 scoreboard players add #depth global 1

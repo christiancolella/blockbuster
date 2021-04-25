@@ -4,6 +4,8 @@ scoreboard players operation @e[type=armor_stand,tag=block,scores={global=2}] an
 scoreboard players operation @e[type=armor_stand,tag=block,scores={global=2}] time = @e[type=armor_stand,tag=block,scores={global=1}] time
 scoreboard players operation @e[type=armor_stand,tag=block,scores={global=2}] play = @e[type=armor_stand,tag=block,scores={global=1}] play
 
+execute if entity @e[type=armor_stand,tag=block,tag=locking,scores={global=1}] run tag @e[type=armor_stand,tag=block,scores={global=2}] add locking
+
 # loop until reaching base parent
 scoreboard players set @e[type=armor_stand,tag=block,scores={global=1}] global 0
 scoreboard players set @e[type=armor_stand,tag=block,scores={global=2}] global 1

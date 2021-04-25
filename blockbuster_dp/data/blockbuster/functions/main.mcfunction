@@ -16,10 +16,11 @@ scoreboard players set @e[type=armor_stand,tag=block] global 0
 function blockbuster:edit
 
 # check relations and add tags
-tag @e[type=armor_stand,tag=block] remove is_parent
-tag @e[type=armor_stand,tag=block] remove has_parent
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
+tag @e[type=armor_stand] remove is_parent
+tag @e[type=armor_stand] remove has_parent
+scoreboard players set @e[type=armor_stand] temp 0
 execute if entity @e[type=armor_stand,tag=block] run function blockbuster:parent/relation
+execute if entity @e[type=armor_stand,tag=locked] run function blockbuster:parent/locked_relation
 
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
@@ -31,6 +32,9 @@ scoreboard players operation #maxdepth global = #depth global
 scoreboard players remove #maxdepth global 1
 
 # animate
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+function blockbuster:parent/send_animation
+
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 function blockbuster:animate
@@ -84,6 +88,10 @@ execute as @e[type=armor_stand,tag=block] store success score @s has_rot run dat
 execute as @e[type=armor_stand,tag=block] if score @s has_rot matches 0 run data merge entity @s {Pose:{Head:[0.001f,0.001f,0.001f]}}
 
 # collision box continued
+execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_x run data get entity @s Pos[0]
+execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_y run data get entity @s Pos[1]
+execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_z run data get entity @s Pos[2]
+
 execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_x = @s self_pos_x
 execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_y = @s self_pos_y
 execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_y += #726 constants
