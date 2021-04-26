@@ -10,6 +10,7 @@ execute as @e[type=armor_stand,tag=locked] if score @s parent_uuid_0 = @e[type=a
 execute as @e[type=armor_stand,tag=locked,scores={temp=2}] at @s run summon armor_stand ~ ~ ~ {Small:1b,Invisible:1b,NoGravity:1b,ShowArms:1b,NoBasePlate:1b,Pose:{RightArm:[0.0f,0.0f,-30.0f],LeftArm:[0.0f,0.0f,30.0f],RightLeg:[180.0f,0.0f,0.0f],LeftLeg:[180.0f,0.0f,0.0f]},ArmorItems:[{id:"minecraft:melon",Count:1b,tag:{Temp:[0],TempDouble:[0.0d],InitialPos:[0,0,0]}},{},{},{id:"minecraft:diamond_block",Count:1b}],DisabledSlots:4079166,Tags:["locked","new_copy"]}
 
 scoreboard players set @e[type=armor_stand,tag=locked,tag=new_copy] play 1
+scoreboard players operation @e[type=armor_stand,tag=locked,tag=new_copy] time = @e[type=armor_stand,tag=locked,scores={temp=1}] time
 scoreboard players operation @e[type=armor_stand,tag=locked,tag=new_copy] anim_length = @e[type=armor_stand,tag=locked,scores={temp=1}] anim_length
 
 scoreboard players set @e[type=armor_stand,tag=locked,tag=new_copy] temp 0

@@ -13,11 +13,10 @@ execute at @e[type=armor_stand,tag=has_collision] positioned ~ ~0.726 ~ if block
 function blockbuster:edit
 
 # check relations and add tags
-tag @e[type=armor_stand] remove is_parent
-tag @e[type=armor_stand] remove has_parent
+tag @e[type=armor_stand,tag=block] remove is_parent
+tag @e[type=armor_stand,tag=block] remove has_parent
 scoreboard players set @e[type=armor_stand] temp 0
 execute if entity @e[type=armor_stand,tag=block] run function blockbuster:parent/relation
-execute if entity @e[type=armor_stand,tag=locked] run function blockbuster:parent/locked/relation
 
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0

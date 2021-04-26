@@ -58,6 +58,9 @@ execute if entity @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=53}
 execute if entity @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=56}] run tag @p[tag=copy,scores={temp=1}] remove copy
 execute if entity @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=1}] run tag @p[tag=copy,scores={temp=1}] remove copy
 
+# light edit
+execute if entity @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=61}] run scoreboard players set #mode global 1
+
 scoreboard players set #steps global 0
 execute unless entity @a[tag=copy,scores={temp=1}] run function blockbuster:ray/cast
 scoreboard players set @a[scores={temp=1}] click 0

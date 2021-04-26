@@ -12,5 +12,9 @@ execute if entity @s[scores={edit=3}] run title @p[scores={temp=1}] actionbar {"
 # parent
 execute if entity @s[scores={edit=4..5}] run title @p[scores={temp=1}] actionbar {"text":"You cannot parent locked blocks!","color":"red"}
 
+# delete
+execute if entity @s[scores={edit=8}] run title @p[scores={temp=1}] actionbar {"text":"Warning: This action will delete all blocks in this group!","color":"red"}
+execute if entity @s[scores={edit=59}] run title @p[scores={temp=1}] actionbar {"text":"Warning: This action will delete all blocks in this group!","color":"red"}
+
 # locked
 execute if entity @s[scores={edit=60}] run title @p[scores={temp=1}] actionbar {"text":"This block is already locked!","color":"red"}
