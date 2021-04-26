@@ -1,0 +1,9 @@
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-45..45] run scoreboard players add @s initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players remove @s[tag=!has_parent] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=45..135] run scoreboard players add @s[tag=has_parent] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=135..180] run scoreboard players remove @s initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-180..-135] run scoreboard players remove @s initial_pos_z 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players add @s[tag=!has_parent] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-45..45,y_rotation=-135..-45] run scoreboard players remove @s[tag=has_parent] initial_pos_x 500
+execute if entity @p[scores={temp=1},x_rotation=-90..-45] run scoreboard players add @s initial_pos_y 500
+execute if entity @p[scores={temp=1},x_rotation=45..90] run scoreboard players remove @s initial_pos_y 500

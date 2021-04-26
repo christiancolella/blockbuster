@@ -1,4 +1,4 @@
-# strictly positive animation length
+# positive animation length
 scoreboard players set @e[type=armor_stand,tag=block,scores={anim_length=..0}] anim_length 1
 
 # increase time
@@ -27,9 +27,11 @@ execute as @e[type=armor_stand,tag=block] if score @s from_pos_time = @s to_pos_
 execute as @e[type=armor_stand,tag=block] if score @s from_rot_time = @s to_rot_time run scoreboard players add @s to_rot_time 1
 
 # calculate interpolations
-function blockbuster:keyframe/interpolate
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+function blockbuster:keyframe/interpolate_main
 
 ## constant
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
 
 ### pos
 execute as @e[type=armor_stand,tag=block,tag=has_pos_keyframe,tag=update,scores={pos_trans_type=5}] run scoreboard players set @s temp 1

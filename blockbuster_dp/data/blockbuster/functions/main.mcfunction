@@ -1,18 +1,18 @@
 # new block
 
 ## from armor stand
-execute if entity @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:bee_spawn_egg",Count:1b,tag:{CustomModelData:1}},{}]}] run function blockbuster:misc/new_block/from_stand
+execute as @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:bee_spawn_egg",Count:1b,tag:{CustomModelData:1}},{}]}] run function blockbuster:misc/new_block/from_stand
 
 ## from spawn egg
-execute if entity @e[type=armor_stand,tag=new_block] run function blockbuster:misc/new_block/from_egg
+execute as @e[type=armor_stand,tag=new_block] run function blockbuster:misc/new_block/from_egg
 
 # collision box
 scoreboard players set @e[type=armor_stand] temp 0
 function blockbuster:misc/collision_box
 
 # edit mode
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
-scoreboard players set @e[type=armor_stand,tag=block] global 0
+scoreboard players set @e[type=armor_stand] temp 0
+scoreboard players set @e[type=armor_stand] global 0
 function blockbuster:edit
 
 # check relations and add tags
@@ -38,52 +38,14 @@ function blockbuster:parent/locked/send_animation
 
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
-function blockbuster:animate
+execute if entity @e[type=armor_stand,tag=block] run function blockbuster:animate
 
 # compute and apply parented transformations
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set #depth global 0
-function blockbuster:transform
-
-# velocity
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_x = @s initial_pos_x
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_x -= @s last_init_pos_x
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_x = @s initial_pos_x
-
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_y = @s initial_pos_y
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_y -= @s last_init_pos_y
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_y = @s initial_pos_y
-
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_z = @s initial_pos_z
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s self_vel_z -= @s last_init_pos_z
-execute as @e[type=armor_stand,tag=block,scores={global=1}] run scoreboard players operation @s last_init_pos_z = @s initial_pos_z
-
-## merge transformations
-execute as @e[type=armor_stand,tag=block,tag=has_parent] run scoreboard players operation @s temp = @s parent_vel_x
-execute as @e[type=armor_stand,tag=block,tag=!has_parent] run scoreboard players operation @s temp = @s self_vel_x
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #150 constants
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp /= #100 constants
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_pos_x += @s temp
-execute as @e[type=armor_stand,tag=block] store result entity @s Pos[0] double 0.001 run scoreboard players get @s self_pos_x
-
-execute as @e[type=armor_stand,tag=block,tag=has_parent] run scoreboard players operation @s temp = @s parent_vel_y
-execute as @e[type=armor_stand,tag=block,tag=!has_parent] run scoreboard players operation @s temp = @s self_vel_y
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #150 constants
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp /= #100 constants
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_pos_y += @s temp
-execute as @e[type=armor_stand,tag=block] store result entity @s Pos[1] double 0.001 run scoreboard players get @s self_pos_y
-
-execute as @e[type=armor_stand,tag=block,tag=has_parent] run scoreboard players operation @s temp = @s parent_vel_z
-execute as @e[type=armor_stand,tag=block,tag=!has_parent] run scoreboard players operation @s temp = @s self_vel_z
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp *= #150 constants
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s temp /= #100 constants
-execute as @e[type=armor_stand,tag=block] run scoreboard players operation @s self_pos_z += @s temp
-execute as @e[type=armor_stand,tag=block] store result entity @s Pos[2] double 0.001 run scoreboard players get @s self_pos_z
-
-execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[0] float 0.001 run scoreboard players get @s self_rot_x
-execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[1] float 0.001 run scoreboard players get @s self_rot_y
-execute as @e[type=armor_stand,tag=block] store result entity @s Pose.Head[2] float 0.001 run scoreboard players get @s self_rot_z
+execute if entity @e[type=armor_stand,tag=block] run function blockbuster:transform
+execute as @e[type=armor_stand,tag=block] run function blockbuster:transform/apply
 
 execute as @e[type=armor_stand] store success score @s has_rot run data get entity @s Pose.Head
 execute as @e[type=armor_stand] if score @s has_rot matches 0 run data merge entity @s {Pose:{Head:[0.001f,0.001f,0.001f]}}
@@ -102,7 +64,7 @@ execute at @e[type=armor_stand,tag=has_collision] positioned ~ ~0.726 ~ if block
 # locking
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
-execute if entity @e[type=armor_stand,tag=block,tag=locking] run function blockbuster:misc/locking
+execute as @e[type=armor_stand,tag=block,tag=locking] run function blockbuster:misc/locking
 
 # locked
-execute if entity @e[type=armor_stand,tag=locked] run function blockbuster:misc/locked
+execute as @e[type=armor_stand,tag=locked] run function blockbuster:misc/locked

@@ -1,0 +1,2 @@
+execute as @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1,temp=0},limit=1] run function blockbuster:transform/trig_compute
+execute if entity @e[type=armor_stand,tag=block,tag=is_parent,scores={global=1,temp=0}] run function blockbuster:transform/trig_main
