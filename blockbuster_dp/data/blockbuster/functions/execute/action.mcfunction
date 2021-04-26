@@ -70,6 +70,7 @@ scoreboard players set @s[scores={edit=19}] play 0
 scoreboard players set @s[scores={edit=18..19}] global 1
 
 # move keyframe
+scoreboard players set @s[scores={edit=49..52}] temp 1
 execute if entity @s[scores={edit=49..52}] run function blockbuster:execute/action/move_keyframe
 
 # new keyframe

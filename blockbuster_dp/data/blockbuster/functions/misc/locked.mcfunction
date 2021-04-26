@@ -17,6 +17,8 @@ scoreboard players operation @s self_pos_z += @s temp
 execute store result entity @s ArmorItems[0].tag.TempDouble[0] double 0.001 run scoreboard players get @s self_pos_z
 data modify entity @s Pos[2] set from entity @s ArmorItems[0].tag.TempDouble[0]
 
+execute at @s[tag=has_collision] positioned ~ ~0.726 ~ if block ~ ~ ~ air run setblock ~ ~ ~ barrier
+
 data modify entity @s Pose.Head[0] set from entity @s ArmorItems[0].tag.RotX[0]
 data modify entity @s Pose.Head[1] set from entity @s ArmorItems[0].tag.RotY[0]
 data modify entity @s Pose.Head[2] set from entity @s ArmorItems[0].tag.RotZ[0]

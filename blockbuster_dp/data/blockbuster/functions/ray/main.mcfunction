@@ -13,7 +13,6 @@ scoreboard players set @a[scores={temp=2}] temp 1
 
 ## unlocked
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
-scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
 execute as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @p[tag=copy,scores={temp=1}] parent_uuid_0 if score @s self_uuid_1 = @p[tag=copy,scores={temp=1}] parent_uuid_1 if score @s self_uuid_2 = @p[tag=copy,scores={temp=1}] parent_uuid_2 if score @s self_uuid_3 = @p[tag=copy,scores={temp=1}] parent_uuid_3 run scoreboard players set @s temp 1
 execute as @p[scores={temp=1}] at @s positioned ~ ~1.625 ~ positioned ^ ^ ^5 align xyz positioned ~0.5 ~-0.226 ~0.5 run tp @e[type=armor_stand,tag=block,scores={temp=1}] ~ ~ ~
 
@@ -40,6 +39,8 @@ execute as @e[type=armor_stand,tag=locked,scores={temp=1}] store result entity @
 execute as @e[type=armor_stand,tag=locked,scores={temp=1}] store result entity @s ArmorItems[0].tag.InitialPos[1] int 1 run data get entity @s Pos[1] 1000
 execute as @e[type=armor_stand,tag=locked,scores={temp=1}] store result entity @s ArmorItems[0].tag.InitialPos[2] int 1 run data get entity @s Pos[2] 1000
 
+execute if entity @e[type=armor_stand,tag=locked,scores={temp=1}] run function blockbuster:parent/locked/send_animation
+
 # send data to ray
 scoreboard players operation @e[type=area_effect_cloud,tag=ray] edit = @a[scores={temp=1}] global
 execute if entity @a[scores={click=1..,temp=1}] run tag @e[type=area_effect_cloud,tag=ray] add execute
@@ -58,7 +59,7 @@ execute if entity @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=56}
 execute if entity @e[type=area_effect_cloud,tag=ray,tag=execute,scores={edit=1}] run tag @p[tag=copy,scores={temp=1}] remove copy
 
 scoreboard players set #steps global 0
-function blockbuster:ray/cast
+execute unless entity @a[tag=copy,scores={temp=1}] run function blockbuster:ray/cast
 scoreboard players set @a[scores={temp=1}] click 0
 
 # repeat

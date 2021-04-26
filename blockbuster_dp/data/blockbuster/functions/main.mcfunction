@@ -6,13 +6,10 @@ execute as @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:bee_spaw
 ## from spawn egg
 execute as @e[type=armor_stand,tag=new_block] run function blockbuster:misc/new_block/from_egg
 
-# collision box
-scoreboard players set @e[type=armor_stand] temp 0
-function blockbuster:misc/collision_box
-
 # edit mode
 scoreboard players set @e[type=armor_stand] temp 0
 scoreboard players set @e[type=armor_stand] global 0
+execute at @e[type=armor_stand,tag=has_collision] positioned ~ ~0.726 ~ if block ~ ~ ~ barrier run setblock ~ ~ ~ air
 function blockbuster:edit
 
 # check relations and add tags
@@ -34,7 +31,6 @@ scoreboard players remove #maxdepth global 1
 # animate
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 function blockbuster:parent/send_animation
-function blockbuster:parent/locked/send_animation
 
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
@@ -50,16 +46,7 @@ execute as @e[type=armor_stand,tag=block] run function blockbuster:transform/app
 execute as @e[type=armor_stand] store success score @s has_rot run data get entity @s Pose.Head
 execute as @e[type=armor_stand] if score @s has_rot matches 0 run data merge entity @s {Pose:{Head:[0.001f,0.001f,0.001f]}}
 
-# collision box continued
-execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_x run data get entity @s Pos[0] 1000
-execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_y run data get entity @s Pos[1] 1000
-execute as @e[type=armor_stand,tag=locked] store result score @s self_pos_z run data get entity @s Pos[2] 1000
-
-execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_x = @s self_pos_x
-execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_y = @s self_pos_y
-execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_y += #726 constants
-execute as @e[type=armor_stand,tag=has_collision] run scoreboard players operation @s last_self_pos_z = @s self_pos_z
-execute at @e[type=armor_stand,tag=has_collision] positioned ~ ~0.726 ~ if block ~ ~ ~ air run setblock ~ ~ ~ barrier
+execute at @e[type=armor_stand,tag=block,tag=has_collision] positioned ~ ~0.726 ~ if block ~ ~ ~ air run setblock ~ ~ ~ barrier
 
 # locking
 scoreboard players set @e[type=armor_stand,tag=block] temp 0

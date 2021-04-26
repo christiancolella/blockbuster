@@ -5,7 +5,7 @@ execute as @e[type=area_effect_cloud,tag=keyframe] if score @s parent_uuid_0 = @
 execute as @e[type=armor_stand,tag=block,scores={temp=1},limit=1] run function blockbuster:keyframe/pos
 
 # rot
-execute as @e[type=armor_stand,tag=block,scores={temp=1},limit=1] run function blockbuster:keyframe/pos
+execute as @e[type=armor_stand,tag=block,scores={temp=1},limit=1] run function blockbuster:keyframe/rot
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 4
 scoreboard players set @e[type=area_effect_cloud,tag=keyframe,scores={temp=2}] temp 4
