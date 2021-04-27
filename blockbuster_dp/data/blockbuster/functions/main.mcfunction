@@ -50,11 +50,11 @@ execute at @e[type=armor_stand,tag=block,tag=has_collision] positioned ~ ~0.726 
 # locking
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
-execute as @e[type=armor_stand,tag=block,tag=locking,tag=!new_locking] run function blockbuster:misc/locking
 
-scoreboard players set @e[type=armor_stand,tag=new_locking] time -1
-tag @e[type=armor_stand,tag=new_locking] add locking
-tag @e[type=armor_stand,tag=new_locking] remove new_locking
+tag @e[type=armor_stand,tag=new_locking,scores={time=0}] add locking
+tag @e[type=armor_stand,tag=new_locking,scores={time=0}] remove new_locking
+
+execute as @e[type=armor_stand,tag=block,tag=locking] run function blockbuster:misc/locking
 
 # locked
 execute as @e[type=armor_stand,tag=locked] run function blockbuster:misc/locked
