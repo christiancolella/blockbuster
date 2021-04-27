@@ -4,7 +4,7 @@ execute as @e[type=armor_stand,tag=block] if score @s parent_uuid_0 = @e[type=ar
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] anim_length = @e[type=armor_stand,tag=block,scores={temp=1}] anim_length
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] time = @e[type=armor_stand,tag=block,scores={temp=1}] time
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=2}] play = @e[type=armor_stand,tag=block,scores={temp=1}] play
-execute if entity @e[type=armor_stand,tag=locking,tag=block,scores={temp=1}] run tag @e[type=armor_stand,tag=block,scores={temp=2}] add locking
+execute if entity @e[type=armor_stand,tag=block,tag=new_locking,scores={temp=1}] run tag @e[type=armor_stand,tag=block,scores={temp=2}] add new_locking
 
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=1}] temp 3
 scoreboard players set @e[type=armor_stand,tag=block,scores={temp=2}] temp 0

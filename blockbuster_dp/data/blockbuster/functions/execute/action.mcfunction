@@ -59,6 +59,7 @@ execute as @s[scores={edit=43}] run function blockbuster:execute/action/rotate/4
 execute as @s[scores={edit=44}] run function blockbuster:execute/action/rotate/5
 
 # animation length
+scoreboard players set @e[type=armor_stand,tag=block] global 0
 execute as @s[scores={edit=45..48}] run function blockbuster:execute/action/animation_length
 
 # timeline
@@ -79,6 +80,9 @@ execute as @s[scores={edit=29..31}] run function blockbuster:execute/action/new_
 # change transition type
 execute if entity @s[scores={edit=34..38}] run function blockbuster:execute/action/transition_type
 
+# update parent
+execute if entity @s[scores={global=1}] run function blockbuster:parent/send_to_parent
+
 # collision box
 tag @s[scores={edit=57}] add has_collision
 tag @s[scores={edit=58}] remove has_collision
@@ -87,7 +91,8 @@ tag @s[scores={edit=58}] remove has_collision
 execute as @s[scores={edit=55}] run function blockbuster:execute/action/copy
 
 # lock
-tag @s[scores={edit=60}] add locking
+scoreboard players set @e[type=armor_stand,tag=block] global 0
+tag @s[scores={edit=60}] add new_locking
 scoreboard players set @s[scores={edit=60}] time -1
 scoreboard players set @s[scores={edit=60}] play 1
 scoreboard players set @s[scores={edit=60}] global 1
