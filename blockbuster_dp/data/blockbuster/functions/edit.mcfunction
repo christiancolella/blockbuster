@@ -8,6 +8,10 @@ execute as @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:warped_f
 execute as @e[type=armor_stand,tag=block,nbt={HandItems:[{id:"minecraft:warped_fungus_on_a_stick"}]}] at @s store result score @p global run data get entity @s HandItems[0].tag.CustomModelData
 execute as @e[type=armor_stand,tag=block] run data merge entity @s {HandItems:[{},{}]}
 
+execute as @e[type=armor_stand,tag=locked,nbt={HandItems:[{id:"minecraft:warped_fungus_on_a_stick"}]}] at @s run scoreboard players set @p click 1
+execute as @e[type=armor_stand,tag=locked,nbt={HandItems:[{id:"minecraft:warped_fungus_on_a_stick"}]}] at @s store result score @p global run data get entity @s HandItems[0].tag.CustomModelData
+execute as @e[type=armor_stand,tag=locked] run data merge entity @s {HandItems:[{},{}]}
+
 execute as @e[type=armor_stand,tag=hitbox,scores={has_hand_item=1},limit=1] run function blockbuster:misc/hitbox
 
 # raycasting

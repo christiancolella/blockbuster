@@ -13,6 +13,7 @@ execute as @e[type=armor_stand,tag=locked,scores={temp=1}] run function blockbus
 execute as @e[type=armor_stand,tag=locked,tag=delete_hierarchy] run function blockbuster:execute/action/delete_hierarchy
 
 # copy
+scoreboard players set @e[type=armor_stand] temp 0
 execute as @s[scores={edit=55}] run function blockbuster:execute/locked/copy
 
 # collision box

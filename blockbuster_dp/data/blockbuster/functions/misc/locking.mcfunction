@@ -1,10 +1,3 @@
-scoreboard players set @s[scores={time=0,depth=0}] global 1
-scoreboard players set @s[scores={global=1}] temp 1
-execute store result entity @s[scores={global=1}] ArmorItems[0].tag.InitialPos[0] int 1 run data get entity @s[scores={global=1}] Pos[0] 1000
-execute store result entity @s[scores={global=1}] ArmorItems[0].tag.InitialPos[1] int 1 run data get entity @s[scores={global=1}] Pos[1] 1000
-execute store result entity @s[scores={global=1}] ArmorItems[0].tag.InitialPos[2] int 1 run data get entity @s[scores={global=1}] Pos[2] 1000
-execute if entity @s[scores={global=1}] run function blockbuster:parent/locking
-
 execute store result score @s self_pos_x run data get entity @s Pos[0] 1000
 execute store result score @s temp run data get entity @s ArmorItems[0].tag.InitialPos[0]
 execute run scoreboard players operation @s self_pos_x -= @s temp
