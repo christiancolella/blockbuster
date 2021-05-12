@@ -4,10 +4,11 @@ execute as @a[tag=blockbuster,scores={temp=0},limit=1] run scoreboard players se
 execute as @a[scores={temp=1}] at @s run summon area_effect_cloud ~ ~1.625 ~ {Age:-2147483648,Duration:-1,WaitTime:-2147483648,Tags:["ray"]}
 execute as @a[scores={temp=1}] run data modify entity @e[type=area_effect_cloud,tag=ray,limit=1] Rotation set from entity @s Rotation
 
-# state transitions
+# inventory
 scoreboard players set @a[scores={click=1..,temp=1}] temp 2
 execute as @a[scores={temp=2}] run function blockbuster:inventory/transitions
 scoreboard players set @a[scores={temp=2}] temp 1
+execute as @a[scores={temp=1}] run function blockbuster:inventory/hotbar
 
 # move copied block
 
@@ -66,5 +67,5 @@ execute unless entity @a[tag=copy,scores={temp=1}] run function blockbuster:ray/
 scoreboard players set @a[scores={temp=1}] click 0
 
 # repeat
-scoreboard players set @a[scores={temp=1}] temp 2
+scoreboard players set @a[scores={temp=1}] temp 3
 execute if entity @a[tag=blockbuster,scores={temp=0}] run function blockbuster:ray/main
