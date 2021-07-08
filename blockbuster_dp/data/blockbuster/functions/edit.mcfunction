@@ -25,7 +25,7 @@ execute if entity @a[tag=blockbuster] run function blockbuster:ray/main
 scoreboard players set @a temp 0
 
 ## delete old hitbox stands
-execute as @e[type=armor_stand,tag=hitbox] if score @s parent_uuid_0 = @e[type=armor_stand,tag=last_selected,tag=!selected,limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=last_selected,tag=!selected,limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=last_selected,tag=!selected,limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=last_selected,tag=!selected,limit=1] self_uuid_3 run kill @s
+execute as @e[type=armor_stand,tag=hitbox] if score @s parent_id = @e[type=armor_stand,tag=last_selected,tag=!selected,limit=1] id run kill @s
 
 scoreboard players set @e[type=armor_stand] temp 0
 execute if entity @e[type=armor_stand,tag=hitbox] run function blockbuster:misc/delete_hitbox

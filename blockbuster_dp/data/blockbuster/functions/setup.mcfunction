@@ -4,15 +4,8 @@ scoreboard objectives add temp dummy
 scoreboard objectives add constants dummy
 scoreboard objectives add trig_table dummy
 
-scoreboard objectives add self_uuid_0 dummy
-scoreboard objectives add self_uuid_1 dummy
-scoreboard objectives add self_uuid_2 dummy
-scoreboard objectives add self_uuid_3 dummy
-
-scoreboard objectives add parent_uuid_0 dummy
-scoreboard objectives add parent_uuid_1 dummy
-scoreboard objectives add parent_uuid_2 dummy
-scoreboard objectives add parent_uuid_3 dummy
+scoreboard objectives add id dummy
+scoreboard objectives add parent_id dummy
 
 scoreboard objectives add self_pos_x dummy
 scoreboard objectives add self_pos_y dummy

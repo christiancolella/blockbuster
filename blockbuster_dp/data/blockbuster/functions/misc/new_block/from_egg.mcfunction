@@ -2,10 +2,7 @@ data merge entity @s {Rotation:[0.0f,0.0f]}
 execute at @s run tp @s ~ ~-0.226 ~
 tag @s add block
 
-execute store result score @s self_uuid_0 run data get entity @s UUID[0]
-execute store result score @s self_uuid_1 run data get entity @s UUID[1]
-execute store result score @s self_uuid_2 run data get entity @s UUID[2]
-execute store result score @s self_uuid_3 run data get entity @s UUID[3]
+execute store result score @s id run data get entity @s UUID[0]
 
 scoreboard players set @s self_vel_x 0
 scoreboard players set @s self_vel_y 0

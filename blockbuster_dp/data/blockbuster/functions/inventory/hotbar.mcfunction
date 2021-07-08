@@ -1,4 +1,4 @@
-execute unless score @s edit matches 1.. run replaceitem entity @s hotbar.8 warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Edit Mode\",\"color\":\"blue\",\"italic\":false}"},CustomModelData:-1}
+execute unless score @s edit matches 1.. run item replace entity @s hotbar.8 with warped_fungus_on_a_stick{display:{Name:"{\"text\":\"Edit Mode\",\"color\":\"blue\",\"italic\":false}"},CustomModelData:-1}
 execute as @s[scores={edit=1}] run function blockbuster:inventory/home
 execute as @s[scores={edit=2}] run function blockbuster:inventory/copy
 execute as @s[scores={edit=3}] run function blockbuster:inventory/parent

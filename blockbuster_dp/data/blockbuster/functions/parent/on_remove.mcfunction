@@ -1,4 +1,4 @@
-execute as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @e[type=armor_stand,tag=block,scores={global=1},limit=1] parent_uuid_0 if score @s self_uuid_1 = @e[type=armor_stand,tag=block,scores={global=1},limit=1] parent_uuid_1 if score @s self_uuid_2 = @e[type=armor_stand,tag=block,scores={global=1},limit=1] parent_uuid_2 if score @s self_uuid_3 = @e[type=armor_stand,tag=block,scores={global=1},limit=1] parent_uuid_3 run scoreboard players set @s global 2
+execute as @e[type=armor_stand,tag=block] if score @s id = @e[type=armor_stand,tag=block,scores={global=1},limit=1] parent_id run scoreboard players set @s global 2
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x += @e[type=armor_stand,tag=block,tag=has_parent,scores={global=2}] initial_pos_x
 scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x -= @e[type=armor_stand,tag=block,tag=!has_parent,scores={global=2}] initial_pos_x
 execute if entity @e[type=armor_stand,tag=block,tag=!has_parent,scores={global=2}] run scoreboard players operation @e[type=armor_stand,tag=block,scores={temp=1}] initial_pos_x *= #-1 constants

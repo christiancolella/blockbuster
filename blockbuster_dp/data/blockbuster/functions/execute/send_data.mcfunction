@@ -2,7 +2,7 @@ scoreboard players operation @s edit = @e[type=area_effect_cloud,tag=ray] edit
 tag @s add glow
 
 # relay to parent
-execute as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @e[type=armor_stand,tag=block,scores={selected=1..2},limit=1] parent_uuid_0 if score @s self_uuid_1 = @e[type=armor_stand,tag=block,scores={selected=1..2},limit=1] parent_uuid_1 if score @s self_uuid_2 = @e[type=armor_stand,tag=block,scores={selected=1..2},limit=1] parent_uuid_2 if score @s self_uuid_3 = @e[type=armor_stand,tag=block,scores={selected=1..2},limit=1] parent_uuid_3 run tag @s add parent_glow
+execute as @e[type=armor_stand,tag=block] if score @s id = @e[type=armor_stand,tag=block,scores={selected=1..2},limit=1] parent_id run tag @s add parent_glow
 
 # relay to player
 

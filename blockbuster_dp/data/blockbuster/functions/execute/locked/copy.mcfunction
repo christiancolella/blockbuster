@@ -17,10 +17,7 @@ data modify entity @e[type=armor_stand,tag=locked,tag=new_copy,limit=1] ArmorIte
 execute if entity @e[type=armor_stand,tag=locked,tag=hidden,scores={temp=1}] run tag @e[type=armor_stand,tag=locked,tag=new_copy] add hidden
 execute if entity @e[type=armor_stand,tag=locked,tag=has_collision,scores={temp=1}] run tag @e[type=armor_stand,tag=locked,tag=new_copy] add has_collision
 
-execute store result score @p[scores={temp=1}] parent_uuid_0 run data get entity @e[type=armor_stand,tag=locked,tag=new_copy,limit=1] UUID[0]
-execute store result score @p[scores={temp=1}] parent_uuid_1 run data get entity @e[type=armor_stand,tag=locked,tag=new_copy,limit=1] UUID[1]
-execute store result score @p[scores={temp=1}] parent_uuid_2 run data get entity @e[type=armor_stand,tag=locked,tag=new_copy,limit=1] UUID[2]
-execute store result score @p[scores={temp=1}] parent_uuid_3 run data get entity @e[type=armor_stand,tag=locked,tag=new_copy,limit=1] UUID[3]
+execute store result score @p[scores={temp=1}] parent_id run data get entity @e[type=armor_stand,tag=locked,tag=new_copy,limit=1] UUID[0]
 
 scoreboard players set @e[type=armor_stand,tag=locked,tag=new_copy] temp 9
 tag @e[type=armor_stand,tag=locked,tag=new_copy] remove new_copy

@@ -14,10 +14,7 @@ scoreboard players set @s parent_omega_x 0
 scoreboard players set @s parent_omega_y 0
 scoreboard players set @s parent_omega_z 0
 
-scoreboard players reset @s parent_uuid_0
-scoreboard players reset @s parent_uuid_1
-scoreboard players reset @s parent_uuid_2
-scoreboard players reset @s parent_uuid_3
+scoreboard players reset @s parent_id
 
 scoreboard players set @s parent_matrix_0 1000
 scoreboard players set @s parent_matrix_1 0

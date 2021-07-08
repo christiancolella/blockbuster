@@ -29,10 +29,7 @@ scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] time = 
 scoreboard players operation @e[type=armor_stand,tag=block,tag=new_copy] play = @s play
 data modify entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] ArmorItems set from entity @s ArmorItems
 
-execute store result score @p[scores={temp=1}] parent_uuid_0 run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[0]
-execute store result score @p[scores={temp=1}] parent_uuid_1 run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[1]
-execute store result score @p[scores={temp=1}] parent_uuid_2 run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[2]
-execute store result score @p[scores={temp=1}] parent_uuid_3 run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[3]
+execute store result score @p[scores={temp=1}] parent_id run data get entity @e[type=armor_stand,tag=block,tag=new_copy,limit=1] UUID[0]
 
 scoreboard players set @e[type=armor_stand,tag=block,tag=new_copy] temp 9
 tag @e[type=armor_stand,tag=block,tag=new_copy] remove new_copy

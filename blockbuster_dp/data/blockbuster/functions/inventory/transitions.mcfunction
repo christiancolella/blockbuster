@@ -2,15 +2,15 @@
 scoreboard players set @s[scores={global=-1}] edit 1
 
 ## exit
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.0 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.1 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.2 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.3 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.4 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.5 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.6 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.7 air
-replaceitem entity @s[scores={edit=1,global=1}] hotbar.8 air
+item replace entity @s[scores={edit=1,global=1}] hotbar.0 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.1 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.2 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.3 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.4 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.5 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.6 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.7 with air
+item replace entity @s[scores={edit=1,global=1}] hotbar.8 with air
 scoreboard players set @s[scores={edit=1,global=1}] edit 0
 
 ## home
@@ -65,10 +65,10 @@ scoreboard players set @s[scores={edit=17..20,global=1}] edit 1
 
 ## copy
 scoreboard players set @s[scores={edit=2,global=56}] edit 17
-execute as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @p[scores={edit=2,global=1}] parent_uuid_0 if score @s self_uuid_1 = @p[scores={edit=2,global=1}] parent_uuid_1 if score @s self_uuid_2 = @p[scores={edit=2,global=1}] parent_uuid_2 if score @s self_uuid_3 = @p[scores={edit=2,global=1}] parent_uuid_3 run tag @s add delete_hierarchy
+execute as @e[type=armor_stand,tag=block] if score @s id = @p[scores={edit=2,global=1}] parent_id run tag @s add delete_hierarchy
 scoreboard players set @s[scores={edit=2,global=1}] edit 17
 scoreboard players set @s[scores={edit=2,global=1}] global 0
 
 ## parent
-execute as @e[type=armor_stand,tag=block] if score @s self_uuid_0 = @p[scores={edit=3,global=1}] parent_uuid_0 if score @s self_uuid_1 = @p[scores={edit=3,global=1}] parent_uuid_1 if score @s self_uuid_2 = @p[scores={edit=3,global=1}] parent_uuid_2 if score @s self_uuid_3 = @p[scores={edit=3,global=1}] parent_uuid_3 run tag @s remove awaiting_parent
+execute as @e[type=armor_stand,tag=block] if score @s id = @p[scores={edit=3,global=1}] parent_id run tag @s remove awaiting_parent
 scoreboard players set @s[scores={edit=3,global=1}] edit 17

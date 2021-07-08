@@ -1,5 +1,5 @@
 scoreboard players set @s temp 1
-execute as @e[type=area_effect_cloud,tag=keyframe,scores={keyframe_type=1..2}] if score @s parent_uuid_0 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_0 if score @s parent_uuid_1 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_1 if score @s parent_uuid_2 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_2 if score @s parent_uuid_3 = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] self_uuid_3 run scoreboard players set @s temp 1
+execute as @e[type=area_effect_cloud,tag=keyframe,scores={keyframe_type=1..2}] if score @s parent_id = @e[type=armor_stand,tag=block,scores={temp=1},limit=1] id run scoreboard players set @s temp 1
 
 scoreboard players set @e[type=armor_stand,tag=block] global 0
 scoreboard players set @s global 1
@@ -31,10 +31,7 @@ scoreboard players set @s parent_matrix_6 0
 scoreboard players set @s parent_matrix_7 0
 scoreboard players set @s parent_matrix_8 1000
 
-scoreboard players reset @s parent_uuid_0
-scoreboard players reset @s parent_uuid_1
-scoreboard players reset @s parent_uuid_2
-scoreboard players reset @s parent_uuid_3
+scoreboard players reset @s parent_id
 
 scoreboard players operation @s last_init_pos_x = @s initial_pos_x
 scoreboard players operation @s last_init_pos_y = @s initial_pos_y
