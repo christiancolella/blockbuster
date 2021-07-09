@@ -1,6 +1,8 @@
 # Blockbuster
 A datapack for animating blocks in Minecraft Java Edition
 
+Showcase/demonstration video: https://www.youtube.com/watch?v=gY2f7aoQ8gk
+
 # How to use
 ## Installing the pack
 Paste "blockbuster_dp" in the "datapacks" folder inside the save folder of whichever world you want to use the datapack in. You will also need to paste "blockbuster_rp" in your "resourcepacks" folder and enable it in-game.
