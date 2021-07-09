@@ -1,3 +1,6 @@
+scoreboard players set @e[type=armor_stand,tag=block] temp 0
+scoreboard players set @s temp 1
+
 # linear pos
 scoreboard players set @s[tag=has_pos_keyframe,scores={temp=1,pos_trans_type=1}] temp 2
 
@@ -251,6 +254,3 @@ scoreboard players operation #from_time global = @s[scores={temp=2}] from_rot_ti
 scoreboard players operation #to_time global = @s[scores={temp=2}] to_rot_time
 execute if entity @s[scores={temp=2}] run function blockbuster:math/interpolate/ease_in_and_out
 scoreboard players operation @s[scores={temp=2}] initial_rot_z = #output_value global
-
-scoreboard players set @s[scores={temp=2}] temp 1
-scoreboard players set @s[scores={temp=1}] temp 3

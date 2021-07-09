@@ -70,13 +70,13 @@ scoreboard players set @s[scores={edit=19}] play 0
 scoreboard players set @s[scores={edit=18..19}] global 1
 
 # move keyframe
-execute if entity @s[scores={edit=49..52}] run function blockbuster:execute/action/move_keyframe
+execute as @s[scores={edit=49..52}] run function blockbuster:execute/action/move_keyframe
 
 # new keyframe
 execute as @s[scores={edit=29..31}] run function blockbuster:execute/action/new_keyframe
 
 # change transition type
-execute if entity @s[scores={edit=34..38}] run function blockbuster:execute/action/transition_type
+execute as @s[scores={edit=34..38}] run function blockbuster:execute/action/transition_type
 
 # collision box
 tag @s[scores={edit=57}] add has_collision
@@ -93,4 +93,4 @@ scoreboard players set @s[scores={edit=60}] play 1
 scoreboard players set @s[scores={edit=60}] global 1
 
 # update parent
-execute if entity @s[scores={global=1}] run function blockbuster:parent/send_to_parent
+execute as @s[scores={global=1}] run function blockbuster:parent/send_to_parent

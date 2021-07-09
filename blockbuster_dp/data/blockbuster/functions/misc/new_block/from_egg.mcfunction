@@ -28,6 +28,7 @@ scoreboard players set @s parent_matrix_8 1000
 
 scoreboard players set @s anim_length 20
 scoreboard players set @s time 0
+scoreboard players set @s last_time 0
 
 data merge entity @s {ArmorItems:[{id:"minecraft:melon",Count:1b,tag:{Temp:[0],TempDouble:[0.0d],InitialPos:[0,0,0]}},{},{},{id:"minecraft:diamond_block",Count:1b}]}
 

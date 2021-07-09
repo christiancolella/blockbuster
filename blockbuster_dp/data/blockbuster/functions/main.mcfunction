@@ -15,8 +15,7 @@ function blockbuster:edit
 # check relations and add tags
 tag @e[type=armor_stand,tag=block] remove is_parent
 tag @e[type=armor_stand,tag=block] remove has_parent
-scoreboard players set @e[type=armor_stand] temp 0
-execute if entity @e[type=armor_stand,tag=block] run function blockbuster:parent/relation
+execute as @e[type=armor_stand,tag=block] run function blockbuster:parent/relation
 
 scoreboard players set #depth global 0
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
@@ -32,9 +31,14 @@ scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block,tag=is_parent,scores={depth=0}] temp 1
 function blockbuster:parent/send_animation
 
-scoreboard players set @e[type=armor_stand,tag=block] temp 0
 scoreboard players set @e[type=armor_stand,tag=block] global 0
-execute if entity @e[type=armor_stand,tag=block] run function blockbuster:animate
+execute as @e[type=armor_stand,tag=block] run function blockbuster:animate
+
+## delete keyframe if block is gone
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 1
+execute as @e[type=armor_stand,tag=block] run function blockbuster:keyframe/delete
+kill @e[type=area_effect_cloud,tag=keyframe,scores={temp=1}]
+scoreboard players set @e[type=area_effect_cloud,tag=keyframe] temp 0
 
 # compute and apply parented transformations
 scoreboard players set @e[type=armor_stand,tag=block] temp 0
