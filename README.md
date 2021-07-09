@@ -1,7 +1,7 @@
 # Blockbuster
 A datapack for animating blocks in Minecraft Java Edition
 
-Showcase/demonstration video: https://www.youtube.com/watch?v=gY2f7aoQ8gk
+[Showcase/demonstration video](https://www.youtube.com/watch?v=gY2f7aoQ8gk)
 
 # How to use
 ## Installing the pack
