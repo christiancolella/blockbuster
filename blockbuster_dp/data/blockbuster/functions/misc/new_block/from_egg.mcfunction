@@ -7,6 +7,11 @@ execute store result score @s id run data get entity @s UUID[0]
 scoreboard players set @s self_vel_x 0
 scoreboard players set @s self_vel_y 0
 scoreboard players set @s self_vel_z 0
+
+scoreboard players set @s parent_omega_x 0
+scoreboard players set @s parent_omega_y 0
+scoreboard players set @s parent_omega_z 0
+
 execute store result score @s initial_pos_x run data get entity @s Pos[0] 1000
 execute store result score @s initial_pos_y run data get entity @s Pos[1] 1000
 execute store result score @s initial_pos_z run data get entity @s Pos[2] 1000
